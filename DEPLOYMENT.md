@@ -1,46 +1,59 @@
 # 🚀 Deployment Guide - NetOps AI Pipeline
 
-## 🎯 Quick Deploy to Render (Recommended)
+## 🎯 Quick Deploy to Railway (Recommended)
 
 ### **Step 1: Prepare Your Repository**
 1. Ensure all files are committed to GitHub
 2. Make sure you have an OpenAI API key ready
 
-### **Step 2: Deploy to Render**
-1. **Visit [render.com](https://render.com)** and sign up/login
-2. **Click "New +"** → **"Web Service"**
-3. **Connect your GitHub repository**
-4. **Configure the service:**
-   - **Name**: `netops-ai-pipeline`
-   - **Environment**: `Python 3`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `uvicorn app:app --host 0.0.0.0 --port $PORT`
-   - **Plan**: Free
+### **Step 2: Deploy to Railway**
+1. **Visit [railway.app](https://railway.app)** and sign up/login
+2. **Click "New Project"** → **"Deploy from GitHub repo"**
+3. **Connect your GitHub repository**: `milewire/netops-ai-pipeline`
+4. **Railway will automatically detect** the Python project and configure it
+5. **Set the service name**: `netops-ai-pipeline`
 
 ### **Step 3: Set Environment Variables**
-In Render dashboard, go to **Environment** tab and add:
+In Railway dashboard, go to **Variables** tab and add:
 - `OPENAI_API_KEY` = Your OpenAI API key
 - `DATABASE_URL` = `sqlite:///netops.db` (default)
+- `PORT` = `8000` (Railway will set this automatically)
 
 ### **Step 4: Deploy**
-Click **"Create Web Service"** and wait for deployment (2-3 minutes)
+Click **"Deploy"** and wait for deployment (2-3 minutes)
 
 ## 🌐 Your Live Application
 
 Once deployed, you'll get a URL like:
-`https://netops-ai-pipeline.onrender.com`
+`https://netops-ai-pipeline-production.up.railway.app`
 
 ### **Access Points:**
-- **Main Interface**: `https://your-app.onrender.com`
-- **API Docs**: `https://your-app.onrender.com/docs`
-- **Health Check**: `https://your-app.onrender.com/health`
+- **Main Interface**: `https://your-app.up.railway.app`
+- **API Docs**: `https://your-app.up.railway.app/docs`
+- **Health Check**: `https://your-app.up.railway.app/health`
+
+## 🚂 Railway Advantages
+
+### **Why Railway is Perfect for This Project:**
+- ✅ **Always Online** - No sleep mode like free Render
+- ✅ **Fast Deployments** - Automatic builds and deployments
+- ✅ **Easy Scaling** - Upgrade plans as needed
+- ✅ **Great Python Support** - Native Python environment
+- ✅ **Custom Domains** - Professional URLs
+- ✅ **Built-in Monitoring** - Performance insights
+- ✅ **GitHub Integration** - Automatic deployments on push
+
+### **Railway Plans:**
+- **Hobby Plan**: $5/month - Perfect for portfolio projects
+- **Pro Plan**: $20/month - For production applications
+- **Team Plan**: $20/user/month - For team collaboration
 
 ## 🔧 Alternative Deployment Options
 
-### **Railway**
-- Similar to Render, good for Python apps
-- Free tier available
-- Easy GitHub integration
+### **Render**
+- Good free tier but sleeps after inactivity
+- Slower cold starts
+- Good for testing
 
 ### **Heroku**
 - More established platform
@@ -54,27 +67,28 @@ Once deployed, you'll get a URL like:
 
 ## 📊 Performance Considerations
 
-### **Free Tier Limitations:**
-- **Render**: 750 hours/month, sleeps after 15 minutes inactive
-- **Railway**: $5/month for always-on service
-- **Heroku**: Sleeps after 30 minutes inactive
+### **Railway Benefits:**
+- **Always Online** - No cold starts
+- **Fast Response Times** - Optimized infrastructure
+- **Automatic Scaling** - Handles traffic spikes
+- **Global CDN** - Fast worldwide access
 
 ### **Production Recommendations:**
-- **Upgrade to paid plan** for always-on service
+- **Upgrade to Pro Plan** for better performance
 - **Add PostgreSQL** for better database performance
-- **Use CDN** for static file serving
-- **Monitor performance** with built-in analytics
+- **Use custom domain** for professional appearance
+- **Monitor performance** with Railway analytics
 
 ## 🔐 Security Best Practices
 
 ### **Environment Variables:**
 - Never commit API keys to GitHub
-- Use Render's secure environment variable storage
+- Use Railway's secure environment variable storage
 - Rotate keys regularly
 
 ### **Production Checklist:**
 - [ ] Set up custom domain
-- [ ] Enable HTTPS (automatic on Render)
+- [ ] Enable HTTPS (automatic on Railway)
 - [ ] Configure CORS properly
 - [ ] Set up monitoring and alerts
 - [ ] Regular security updates
@@ -82,7 +96,7 @@ Once deployed, you'll get a URL like:
 ## 🎯 Career Portfolio Benefits
 
 ### **Professional URL:**
-- `https://your-name-netops-ai.onrender.com`
+- `https://your-name-netops-ai.up.railway.app`
 - Perfect for resume and LinkedIn
 - Demonstrates deployment skills
 
@@ -95,15 +109,38 @@ Once deployed, you'll get a URL like:
 
 ### **Common Issues:**
 1. **Build fails**: Check requirements.txt and Python version
-2. **App crashes**: Check logs in Render dashboard
+2. **App crashes**: Check logs in Railway dashboard
 3. **API errors**: Verify environment variables
-4. **Slow loading**: Normal for free tier (cold starts)
+4. **Domain issues**: Check custom domain configuration
 
-### **Support:**
-- Render has excellent documentation
-- Community forums available
-- Email support for paid plans
+### **Railway Support:**
+- Excellent documentation at docs.railway.app
+- Active Discord community
+- Email support for all plans
+
+## 🚀 Quick Railway Commands
+
+### **Using Railway CLI (Optional):**
+```bash
+# Install Railway CLI
+npm install -g @railway/cli
+
+# Login to Railway
+railway login
+
+# Link to your project
+railway link
+
+# Deploy from local
+railway up
+
+# View logs
+railway logs
+
+# Open in browser
+railway open
+```
 
 ---
 
-**🎉 Congratulations! Your enterprise AI pipeline is now live and ready to showcase your skills!**
+**🎉 Congratulations! Your enterprise AI pipeline is now live on Railway and ready to showcase your skills!**

@@ -162,8 +162,8 @@ docker run -p 8000:8000 netops-ai-pipeline
 ```
 
 ### Production Deployment
-- **Render** (Recommended): Easy deployment with free tier - [Deployment Guide](DEPLOYMENT.md)
-- **Railway**: Alternative platform with good Python support
+- **Railway** (Recommended): Professional hosting with always-on service - [Deployment Guide](DEPLOYMENT.md)
+- **Render**: Good free tier but sleeps after inactivity
 - **Heroku**: Established platform for production apps
 - **Azure App Service**: Enterprise-grade hosting with full Azure integration
 
