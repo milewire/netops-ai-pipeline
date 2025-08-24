@@ -27,6 +27,15 @@ app.add_middleware(
 # Initialize database
 init_db()
 
+# Add CORS for production
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Using the generate_ai_kpi_summary function from summarize.py
 
 @app.get("/", response_class=HTMLResponse)

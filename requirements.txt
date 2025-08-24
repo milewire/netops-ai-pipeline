@@ -6,8 +6,6 @@ matplotlib==3.9.2
 sqlmodel==0.0.21
 pydantic==2.9.0
 python-dotenv==1.0.1
-pytest==8.3.2
-ruff==0.6.8
-black==24.8.0
-joblib==1.4.2
 python-multipart==0.0.20
+joblib==1.4.2
+openai==1.12.0

@@ -162,10 +162,10 @@ docker run -p 8000:8000 netops-ai-pipeline
 ```
 
 ### Production Deployment
-- **Azure App Service**: Web application hosting
-- **Azure Database**: PostgreSQL for production data
-- **Azure Blob Storage**: File storage and chart caching
-- **Azure Application Insights**: Monitoring and analytics
+- **Render** (Recommended): Easy deployment with free tier - [Deployment Guide](DEPLOYMENT.md)
+- **Railway**: Alternative platform with good Python support
+- **Heroku**: Established platform for production apps
+- **Azure App Service**: Enterprise-grade hosting with full Azure integration
 
 ## 📈 Performance Metrics
 
