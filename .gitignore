@@ -23,6 +23,7 @@ MANIFEST
 
 # Virtual environments
 .env
+.env.local  
 .venv
 env/
 venv/
@@ -50,6 +51,9 @@ temp_*
 *.jpg
 *.jpeg
 charts/
+temp_chart_*.png
+chart_test.png
+new_chart.png
 
 # IDE
 .vscode/

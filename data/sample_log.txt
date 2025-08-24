@@ -1,0 +1,7 @@
+2024-01-01 10:00:00 ERROR Connection timeout to database server
+2024-01-01 10:01:00 WARN High memory usage detected: 85%
+2024-01-01 10:02:00 CRIT System failure: Network interface down
+2024-01-01 10:03:00 ERROR Authentication failed for user admin
+2024-01-01 10:04:00 ALARM CPU usage exceeded threshold: 95%
+2024-01-01 10:05:00 INFO System backup completed successfully
+2024-01-01 10:06:00 WARN Disk space low: 10% remaining

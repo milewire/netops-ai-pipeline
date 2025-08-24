@@ -1,6 +1,7 @@
 from sqlmodel import SQLModel, Field, create_engine, Session
 from datetime import datetime
 
+# Use SQLite database
 engine = create_engine("sqlite:///netops.db", echo=False)
 
 
@@ -17,6 +18,11 @@ class Score(SQLModel, table=True):
     ts: str
     anomaly: int
     score: float
+    # Original KPI data for AI analysis
+    prb_util: float | None = Field(default=None)
+    rrc_conn: float | None = Field(default=None)
+    throughput_mbps: float | None = Field(default=None)
+    bler: float | None = Field(default=None)
 
 
 def init_db():
@@ -25,3 +31,9 @@ def init_db():
 
 def get_session():
     return Session(engine)
+
+
+def close_session(session):
+    """Close database session"""
+    if session:
+        session.close()
