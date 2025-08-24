@@ -54,6 +54,9 @@ charts/
 temp_chart_*.png
 chart_test.png
 new_chart.png
+chart_*.png
+output/
+results/
 
 # IDE
 .vscode/
@@ -67,3 +70,35 @@ Thumbs.db
 
 # Logs
 *.log
+logs/
+
+# Railway deployment
+.railway/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Documentation builds
+docs/_build/
+site/
+
+# Backup files
+*.bak
+*.backup
+*~
+DATBASE_URL
