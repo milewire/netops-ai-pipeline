@@ -1,0 +1,33 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with: 
+          python-version: "3.11"
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install joblib
+      
+      - name: Run linting
+        run: |
+          ruff check .
+          black --check .
+      
+      - name: Run tests
+        run: |
+          python -c "from storage import init_db; init_db()"
+          pytest -v
+      
+      - name: Test Docker build
+        run: |
+          docker build -t netops-ai-pipeline .
