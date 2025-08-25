@@ -566,17 +566,17 @@ def home():
                                      ${insightsHtml}
                                  </ul>
                              </div>
-                             <div class="action-buttons">
-                                 <a href="/report/${data.upload_id}" target="_blank" class="action-btn">
-                                     <i class="fas fa-chart-bar"></i> AI Report
-                                 </a>
-                                 <a href="/chart/${data.upload_id}" target="_blank" class="action-btn">
-                                     <i class="fas fa-chart-line"></i> Visualization
-                                 </a>
-                                 <a href="/ai-summary/${data.upload_id}" target="_blank" class="action-btn">
-                                     <i class="fas fa-brain"></i> AI Insights
-                                 </a>
-                             </div>
+                                                           <div class="action-buttons">
+                                  <a href="/ai-summary/${data.upload_id}" target="_blank" class="action-btn">
+                                      <i class="fas fa-chart-bar"></i> AI Report
+                                  </a>
+                                  <a href="/chart/${data.upload_id}" target="_blank" class="action-btn">
+                                      <i class="fas fa-chart-line"></i> Visualization
+                                  </a>
+                                  <a href="/report/${data.upload_id}" target="_blank" class="action-btn">
+                                      <i class="fas fa-code"></i> JSON Data
+                                  </a>
+                              </div>
                          </div>
                      `;
                 } else {
@@ -1775,17 +1775,17 @@ def list_uploads_html():
                     <span class="stat-label">Anomaly Rate</span>
                 </div>
             </div>
-            <div class="upload-actions">
-                <a href="/report/{u.id}" class="action-link" target="_blank">
-                    <i class="fas fa-chart-bar"></i> Report
-                </a>
-                <a href="/chart/{u.id}" class="action-link" target="_blank">
-                    <i class="fas fa-chart-line"></i> Chart
-                </a>
-                <a href="/ai-summary/{u.id}" class="action-link" target="_blank">
-                    <i class="fas fa-brain"></i> AI Insights
-                </a>
-            </div>
+                         <div class="upload-actions">
+                 <a href="/ai-summary/{u.id}" class="action-link" target="_blank">
+                     <i class="fas fa-chart-bar"></i> AI Report
+                 </a>
+                 <a href="/chart/{u.id}" class="action-link" target="_blank">
+                     <i class="fas fa-chart-line"></i> Chart
+                 </a>
+                 <a href="/report/{u.id}" class="action-link" target="_blank">
+                     <i class="fas fa-code"></i> JSON Data
+                 </a>
+             </div>
         </div>
         """
     
