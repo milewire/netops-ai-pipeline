@@ -96,20 +96,52 @@ def generate_fallback_kpi_summary(df, anomalies, scores):
     anomaly_count = len(anomalies)
     anomaly_rate = (anomaly_count / total_samples) * 100 if total_samples > 0 else 0
     
+    # Calculate additional metrics for better insights
+    avg_prb_util = df['PRB_Util'].mean() if 'PRB_Util' in df.columns else 0
+    avg_throughput = df['Throughput_Mbps'].mean() if 'Throughput_Mbps' in df.columns else 0
+    avg_bler = df['BLER'].mean() if 'BLER' in df.columns else 0
+    
+    # Determine severity based on multiple factors
     severity = "HIGH" if anomaly_rate > 10 else "MEDIUM" if anomaly_rate > 5 else "LOW"
     
+    # Generate more detailed insights
+    insights = [
+        f"Anomaly detection rate: {anomaly_rate:.1f}% ({anomaly_count} out of {total_samples} samples)",
+        f"Average PRB Utilization: {avg_prb_util:.1f}%",
+        f"Average Throughput: {avg_throughput:.1f} Mbps",
+        f"Average Block Error Rate: {avg_bler:.3f}"
+    ]
+    
+    # Generate actionable recommendations
+    recommendations = []
+    if anomaly_rate > 10:
+        recommendations.extend([
+            "🚨 IMMEDIATE ACTION REQUIRED: High anomaly rate detected",
+            "Investigate cells with highest anomaly scores for potential issues",
+            "Review network capacity and resource allocation"
+        ])
+    elif anomaly_rate > 5:
+        recommendations.extend([
+            "⚠️ MONITOR CLOSELY: Moderate anomalies detected",
+            "Analyze performance trends in affected cells",
+            "Consider proactive capacity planning"
+        ])
+    else:
+        recommendations.extend([
+            "✅ NETWORK HEALTHY: Low anomaly rate indicates good performance",
+            "Continue monitoring for any emerging issues",
+            "Maintain current optimization strategies"
+        ])
+    
+    recommendations.extend([
+        "Schedule regular performance reviews",
+        "Implement continuous monitoring alerts"
+    ])
+    
     return {
-        "summary": f"Network analysis completed with {anomaly_count} anomalies detected ({anomaly_rate:.1f}% rate). Severity level: {severity}.",
-        "insights": [
-            f"Anomaly detection rate: {anomaly_rate:.1f}%",
-            f"Total data points analyzed: {total_samples}",
-            f"Critical cells requiring attention: {len(anomalies)}"
-        ],
-        "recommendations": [
-            "Investigate cells with highest anomaly scores",
-            "Monitor network performance trends",
-            "Consider capacity optimization if anomaly rate > 5%"
-        ],
+        "summary": f"Network performance analysis completed successfully. {anomaly_count} anomalies detected out of {total_samples} total samples, representing a {anomaly_rate:.1f}% anomaly rate. Overall severity level: {severity}.",
+        "insights": insights,
+        "recommendations": recommendations,
         "severity": severity,
         "ai_generated": False
     }

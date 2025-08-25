@@ -1910,7 +1910,25 @@ def ai_summary(upload_id: int):
         anomalies = df[df['anomaly'] == -1]
         
         # Generate AI summary using the function
-        ai_result = generate_ai_kpi_summary(df, anomalies, df['score'])
+        try:
+            ai_result = generate_ai_kpi_summary(df, anomalies, df['score'])
+        except Exception as ai_error:
+            print(f"AI summary generation error: {ai_error}")
+            # Fallback to basic summary
+            ai_result = {
+                "summary": f"Network performance analysis completed. {len(anomalies)} anomalies detected out of {len(df)} total samples.",
+                "insights": [
+                    f"Anomaly detection rate: {(len(anomalies) / len(df) * 100):.1f}%",
+                    f"Total data points analyzed: {len(df)}",
+                    f"Critical cells requiring attention: {len(anomalies)}"
+                ],
+                "recommendations": [
+                    "Investigate cells with highest anomaly scores",
+                    "Monitor network performance trends",
+                    "Consider capacity optimization if anomaly rate > 5%"
+                ],
+                "severity": "MEDIUM"
+            }
         
         # Create user-friendly HTML response
         insights_html = ""
