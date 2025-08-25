@@ -45,6 +45,8 @@ venv.bak/
 *.tmp
 *.temp
 temp_*
+/tmp/
+/temp/
 
 # Charts and outputs
 *.png
@@ -57,6 +59,18 @@ new_chart.png
 chart_*.png
 output/
 results/
+
+# PDF files
+*.pdf
+test_*.pdf
+final_*.pdf
+temp_*.pdf
+
+# Test files
+test_*.csv
+test_*.txt
+test_*.py
+debug_*.py
 
 # IDE
 .vscode/
@@ -101,4 +115,7 @@ site/
 *.bak
 *.backup
 *~
-DATBASE_URL
+
+# Environment variables
+DATABASE_URL
+OPENAI_API_KEY

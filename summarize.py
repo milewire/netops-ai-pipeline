@@ -123,19 +123,19 @@ def generate_fallback_kpi_summary(df, anomalies, scores):
     recommendations = []
     if anomaly_rate > 10:
         recommendations.extend([
-            "🚨 IMMEDIATE ACTION REQUIRED: High anomaly rate detected",
+            "[ALERT] IMMEDIATE ACTION REQUIRED: High anomaly rate detected",
             "Investigate cells with highest anomaly scores for potential issues",
             "Review network capacity and resource allocation"
         ])
     elif anomaly_rate > 5:
         recommendations.extend([
-            "⚠️ MONITOR CLOSELY: Moderate anomalies detected",
+            "[WARNING] MONITOR CLOSELY: Moderate anomalies detected",
             "Analyze performance trends in affected cells",
             "Consider proactive capacity planning"
         ])
     else:
         recommendations.extend([
-            "✅ NETWORK HEALTHY: Low anomaly rate indicates good performance",
+            "[OK] NETWORK HEALTHY: Low anomaly rate indicates good performance",
             "Continue monitoring for any emerging issues",
             "Maintain current optimization strategies"
         ])

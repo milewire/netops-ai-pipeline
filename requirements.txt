@@ -9,3 +9,4 @@ python-dotenv==1.0.1
 python-multipart==0.0.20
 joblib==1.4.2
 openai==1.12.0
+fpdf2==2.8.4
