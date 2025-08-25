@@ -8,13 +8,20 @@ load_dotenv()
 
 # Initialize OpenAI client if API key is available
 openai_client = None
-if os.getenv("OPENAI_API_KEY"):
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("OPENAI_API_KEY")
+print(f"OpenAI API Key available: {bool(api_key)}")
+if api_key:
+    openai.api_key = api_key
     openai_client = openai
+    print("OpenAI client initialized successfully")
+else:
+    print("No OpenAI API key found, will use fallback summary")
 
 def generate_ai_kpi_summary(df, anomalies, scores):
     """Generate AI-powered insights using OpenAI"""
+    print(f"generate_ai_kpi_summary called - openai_client available: {openai_client is not None}")
     if not openai_client:
+        print("No OpenAI client available, using fallback summary")
         return generate_fallback_kpi_summary(df, anomalies, scores)
     
     try:
