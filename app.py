@@ -20,9 +20,9 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
+    allow_origins=["https://netops-ai-pipeline.railway.app", "http://localhost:8001", "http://127.0.0.1:8001"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
@@ -32,9 +32,9 @@ init_db()
 # Add CORS for production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
+    allow_origins=["https://netops-ai-pipeline.railway.app", "http://localhost:8001", "http://127.0.0.1:8001"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
@@ -1799,8 +1799,9 @@ def get_pdf_report(upload_id: int):
         try:
             ai_summary = generate_ai_kpi_summary(df, anomalies, df['score'])
         except Exception as ai_error:
-            print(f"AI summary generation failed: {ai_error}")
+            # AI summary generation failed - handled gracefully
             # Continue without AI summary
+            pass
         
         # Generate PDF report
         pdf_path = generate_kpi_pdf_report(upload_id, df, anomalies, ai_summary)
@@ -1814,7 +1815,7 @@ def get_pdf_report(upload_id: int):
         )
         
     except Exception as e:
-        print(f"PDF generation error: {e}")
+        # PDF generation error - handled gracefully
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"PDF generation error: {str(e)}")
@@ -1856,7 +1857,7 @@ def ai_summary(upload_id: int):
         try:
             ai_result = generate_ai_kpi_summary(df, anomalies, df['score'])
         except Exception as ai_error:
-            print(f"AI summary generation error: {ai_error}")
+            # AI summary generation error - handled gracefully
             # Fallback to basic summary
             ai_result = {
                 "summary": f"Network performance analysis completed. {len(anomalies)} anomalies detected out of {len(df)} total samples.",
@@ -2281,7 +2282,7 @@ def ai_summary(upload_id: int):
         """
         
     except Exception as e:
-        print(f"AI summary error: {str(e)}")
+        # AI summary error - handled gracefully
         # Return a simple error page
         return f"""
         <!DOCTYPE html>

@@ -37,14 +37,14 @@ def create_labels(df):
 
 def train_random_forest_models(df):
     """Train both Random Forest Classifier and Regressor"""
-    print("Training Random Forest models...")
+    # Training Random Forest models...
     
     # Prepare features (exclude non-numeric columns)
     feature_columns = ['PRB_Util', 'RRC_Conn', 'Throughput_Mbps', 'BLER']
     X = df[feature_columns].fillna(0)
     
     # Train Classifier
-    print("Training Classifier...")
+    # Training Classifier...
     labels = create_labels(df)
     le = LabelEncoder()
     y_class = le.fit_transform(labels)
@@ -61,10 +61,10 @@ def train_random_forest_models(df):
     
     # Evaluate classifier
     y_pred = classifier.predict(X_test)
-    print("Classifier Accuracy:", classifier.score(X_test, y_test))
+    # Classifier trained successfully
     
     # Train Regressor (predict throughput)
-    print("Training Regressor...")
+    # Training Regressor...
     y_reg = df['Throughput_Mbps'].fillna(df['Throughput_Mbps'].mean())
     
     X_train_reg, X_test_reg, y_train_reg, y_test_reg = train_test_split(X, y_reg, test_size=0.2, random_state=42)
@@ -81,15 +81,14 @@ def train_random_forest_models(df):
     y_pred_reg = regressor.predict(X_test_reg)
     r2 = r2_score(y_test_reg, y_pred_reg)
     rmse = np.sqrt(mean_squared_error(y_test_reg, y_pred_reg))
-    print(f"Regressor R² Score: {r2:.3f}")
-    print(f"Regressor RMSE: {rmse:.3f}")
+    # Regressor trained successfully
     
     # Save models
     joblib.dump(classifier, CLASSIFIER_PATH)
     joblib.dump(regressor, REGRESSOR_PATH)
     joblib.dump(le, LABEL_ENCODER_PATH)
     
-    print("Random Forest models trained and saved successfully!")
+    # Random Forest models trained and saved successfully!
     
     return classifier, regressor, le
 
@@ -185,7 +184,7 @@ def analyze_with_random_forest(df):
     classifier, regressor, le = load_random_forest_models()
     
     if classifier is None:
-        print("Training new Random Forest models...")
+        # Training new Random Forest models...
         classifier, regressor, le = train_random_forest_models(df)
     
     # Get predictions

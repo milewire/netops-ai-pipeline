@@ -288,4 +288,5 @@ def cleanup_pdf_file(file_path):
         if os.path.exists(file_path):
             os.unlink(file_path)
     except Exception as e:
-        print(f"Error cleaning up PDF file: {e}")
+        # Error cleaning up PDF file
+        pass

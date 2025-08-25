@@ -9,19 +9,15 @@ load_dotenv()
 # Initialize OpenAI client if API key is available
 openai_client = None
 api_key = os.getenv("OPENAI_API_KEY")
-print(f"OpenAI API Key available: {bool(api_key)}")
+# Initialize OpenAI client if API key is available
 if api_key:
     openai.api_key = api_key
     openai_client = openai
-    print("OpenAI client initialized successfully")
-else:
-    print("No OpenAI API key found, will use fallback summary")
 
 def generate_ai_kpi_summary(df, anomalies, scores):
     """Generate AI-powered insights using OpenAI"""
-    print(f"generate_ai_kpi_summary called - openai_client available: {openai_client is not None}")
+    # Check if OpenAI client is available
     if not openai_client:
-        print("No OpenAI client available, using fallback summary")
         return generate_fallback_kpi_summary(df, anomalies, scores)
     
     try:
@@ -94,7 +90,7 @@ def generate_ai_kpi_summary(df, anomalies, scores):
             }
             
     except Exception as e:
-        print(f"OpenAI API error: {e}")
+        # OpenAI API error - fallback to heuristic summary
         return generate_fallback_kpi_summary(df, anomalies, scores)
 
 def generate_fallback_kpi_summary(df, anomalies, scores):
@@ -214,7 +210,7 @@ def summarize_logs(text: str) -> str:
             return ai_response
             
     except Exception as e:
-        print(f"OpenAI API error: {e}")
+        # OpenAI API error - fallback to heuristic summary
         return summarize_logs_heuristic(text)
 
 def summarize_logs_heuristic(text: str) -> str:
