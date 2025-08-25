@@ -392,19 +392,247 @@ def home():
                 transform: translateY(-2px);
             }
             
-            @media (max-width: 768px) {
-                .main-content {
-                    grid-template-columns: 1fr;
-                }
-                
-                .header h1 {
-                    font-size: 2.5em;
-                }
-                
-                .stats-bar {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
+                         @media (max-width: 768px) {
+                 .container {
+                     padding: 15px;
+                 }
+                 
+                 .main-content {
+                     grid-template-columns: 1fr;
+                     gap: 20px;
+                 }
+                 
+                 .header {
+                     padding: 30px 20px;
+                     margin-bottom: 20px;
+                 }
+                 
+                 .header h1 {
+                     font-size: 2.2em;
+                     line-height: 1.2;
+                 }
+                 
+                 .header p {
+                     font-size: 1.1em;
+                 }
+                 
+                 .stats-bar {
+                     grid-template-columns: repeat(2, 1fr);
+                     gap: 15px;
+                     margin-bottom: 20px;
+                 }
+                 
+                 .stat-card {
+                     padding: 20px 15px;
+                 }
+                 
+                 .stat-icon {
+                     font-size: 2em;
+                     margin-bottom: 10px;
+                 }
+                 
+                 .stat-number {
+                     font-size: 2em;
+                 }
+                 
+                 .stat-label {
+                     font-size: 0.8em;
+                 }
+                 
+                 .upload-section {
+                     padding: 25px 20px;
+                 }
+                 
+                 .upload-section h3 {
+                     font-size: 1.3em;
+                     margin-bottom: 15px;
+                 }
+                 
+                 .file-upload-area {
+                     padding: 30px 15px;
+                     margin-bottom: 15px;
+                 }
+                 
+                 .file-upload-area input[type="file"] {
+                     padding: 12px;
+                     font-size: 0.9em;
+                 }
+                 
+                 .file-upload-area input[type="file"]::file-selector-button {
+                     padding: 8px 16px;
+                     font-size: 0.9em;
+                     margin-right: 10px;
+                 }
+                 
+                 .checkbox-group {
+                     padding: 12px;
+                     margin-bottom: 15px;
+                 }
+                 
+                 .checkbox-group label {
+                     font-size: 0.9em;
+                     gap: 8px;
+                 }
+                 
+                 .btn {
+                     padding: 12px 20px;
+                     font-size: 0.9em;
+                 }
+                 
+                 .result {
+                     padding: 20px;
+                     margin-top: 15px;
+                 }
+                 
+                 .result h4 {
+                     font-size: 1.2em;
+                     margin-bottom: 12px;
+                 }
+                 
+                 .metrics-grid {
+                     grid-template-columns: repeat(2, 1fr);
+                     gap: 12px;
+                     margin: 15px 0;
+                 }
+                 
+                 .metric-card {
+                     padding: 12px;
+                 }
+                 
+                 .metric-value {
+                     font-size: 1.5em;
+                 }
+                 
+                 .metric-label {
+                     font-size: 0.7em;
+                 }
+                 
+                 .action-buttons {
+                     flex-direction: column;
+                     gap: 10px;
+                     margin-top: 15px;
+                 }
+                 
+                 .action-btn {
+                     padding: 12px 16px;
+                     font-size: 0.9em;
+                     text-align: center;
+                     justify-content: center;
+                 }
+                 
+                 .footer {
+                     margin-top: 30px;
+                     padding: 25px 20px;
+                 }
+                 
+                 .footer h3 {
+                     font-size: 1.2em;
+                     margin-bottom: 15px;
+                 }
+                 
+                 .footer-links {
+                     flex-direction: column;
+                     gap: 12px;
+                 }
+                 
+                 .footer-link {
+                     padding: 12px 16px;
+                     font-size: 0.9em;
+                     text-align: center;
+                 }
+             }
+             
+             @media (max-width: 480px) {
+                 .container {
+                     padding: 10px;
+                 }
+                 
+                 .header {
+                     padding: 25px 15px;
+                     border-radius: 15px;
+                 }
+                 
+                 .header h1 {
+                     font-size: 1.8em;
+                 }
+                 
+                 .header p {
+                     font-size: 1em;
+                 }
+                 
+                 .stats-bar {
+                     grid-template-columns: 1fr;
+                     gap: 12px;
+                 }
+                 
+                 .stat-card {
+                     padding: 18px 12px;
+                 }
+                 
+                 .stat-icon {
+                     font-size: 1.8em;
+                 }
+                 
+                 .stat-number {
+                     font-size: 1.8em;
+                 }
+                 
+                 .upload-section {
+                     padding: 20px 15px;
+                     border-radius: 15px;
+                 }
+                 
+                 .upload-section h3 {
+                     font-size: 1.2em;
+                 }
+                 
+                 .file-upload-area {
+                     padding: 25px 12px;
+                 }
+                 
+                 .file-upload-area input[type="file"] {
+                     padding: 10px;
+                     font-size: 0.85em;
+                 }
+                 
+                 .file-upload-area input[type="file"]::file-selector-button {
+                     padding: 6px 12px;
+                     font-size: 0.85em;
+                 }
+                 
+                 .btn {
+                     padding: 10px 16px;
+                     font-size: 0.85em;
+                 }
+                 
+                 .metrics-grid {
+                     grid-template-columns: 1fr;
+                     gap: 10px;
+                 }
+                 
+                 .metric-card {
+                     padding: 15px 10px;
+                 }
+                 
+                 .metric-value {
+                     font-size: 1.3em;
+                 }
+                 
+                 .action-btn {
+                     padding: 10px 12px;
+                     font-size: 0.85em;
+                 }
+                 
+                 .footer {
+                     padding: 20px 15px;
+                     border-radius: 15px;
+                 }
+                 
+                 .footer-link {
+                     padding: 10px 12px;
+                     font-size: 0.85em;
+                 }
+             }
         </style>
     </head>
     <body>
@@ -840,11 +1068,169 @@ def health_page():
                 margin-bottom: 5px;
             }
             
-            .info-value {
-                color: #ffffff;
-                font-weight: 600;
-                font-size: 1.1em;
-            }
+                         .info-value {
+                 color: #ffffff;
+                 font-weight: 600;
+                 font-size: 1.1em;
+             }
+             
+             @media (max-width: 768px) {
+                 .container {
+                     padding: 15px;
+                 }
+                 
+                 .header {
+                     padding: 30px 20px;
+                     margin-bottom: 20px;
+                 }
+                 
+                 .header h1 {
+                     font-size: 2.2em;
+                 }
+                 
+                 .header p {
+                     font-size: 1.1em;
+                 }
+                 
+                 .health-container {
+                     padding: 25px 20px;
+                 }
+                 
+                 .status-grid {
+                     grid-template-columns: repeat(2, 1fr);
+                     gap: 15px;
+                     margin-bottom: 25px;
+                 }
+                 
+                 .status-card {
+                     padding: 20px 15px;
+                 }
+                 
+                 .status-icon {
+                     font-size: 2.5em;
+                     margin-bottom: 12px;
+                 }
+                 
+                 .status-title {
+                     font-size: 1.2em;
+                     margin-bottom: 8px;
+                 }
+                 
+                 .status-value {
+                     font-size: 1em;
+                     margin-bottom: 8px;
+                 }
+                 
+                 .status-description {
+                     font-size: 0.8em;
+                 }
+                 
+                 .system-info {
+                     padding: 20px 15px;
+                     margin-top: 25px;
+                 }
+                 
+                 .system-info h3 {
+                     font-size: 1.2em;
+                     margin-bottom: 15px;
+                 }
+                 
+                 .info-grid {
+                     grid-template-columns: repeat(2, 1fr);
+                     gap: 12px;
+                 }
+                 
+                 .info-item {
+                     padding: 12px 10px;
+                 }
+                 
+                 .info-label {
+                     font-size: 0.8em;
+                 }
+                 
+                 .info-value {
+                     font-size: 1em;
+                 }
+             }
+             
+             @media (max-width: 480px) {
+                 .container {
+                     padding: 10px;
+                 }
+                 
+                 .header {
+                     padding: 25px 15px;
+                     border-radius: 15px;
+                 }
+                 
+                 .header h1 {
+                     font-size: 1.8em;
+                 }
+                 
+                 .header p {
+                     font-size: 1em;
+                 }
+                 
+                 .health-container {
+                     padding: 20px 15px;
+                     border-radius: 15px;
+                 }
+                 
+                 .status-grid {
+                     grid-template-columns: 1fr;
+                     gap: 12px;
+                     margin-bottom: 20px;
+                 }
+                 
+                 .status-card {
+                     padding: 18px 12px;
+                 }
+                 
+                 .status-icon {
+                     font-size: 2.2em;
+                 }
+                 
+                 .status-title {
+                     font-size: 1.1em;
+                 }
+                 
+                 .status-value {
+                     font-size: 0.9em;
+                 }
+                 
+                 .status-description {
+                     font-size: 0.75em;
+                 }
+                 
+                 .system-info {
+                     padding: 15px 12px;
+                     margin-top: 20px;
+                     border-radius: 12px;
+                 }
+                 
+                 .system-info h3 {
+                     font-size: 1.1em;
+                     margin-bottom: 12px;
+                 }
+                 
+                 .info-grid {
+                     grid-template-columns: 1fr;
+                     gap: 10px;
+                 }
+                 
+                 .info-item {
+                     padding: 10px 8px;
+                     border-radius: 8px;
+                 }
+                 
+                 .info-label {
+                     font-size: 0.75em;
+                 }
+                 
+                 .info-value {
+                     font-size: 0.9em;
+                 }
+             }
         </style>
     </head>
     <body>
@@ -1086,12 +1472,168 @@ def docs_page():
                 margin-bottom: 10px;
             }
             
-            .format-example pre {
-                color: #e2e8f0;
-                font-family: 'Courier New', monospace;
-                font-size: 0.9em;
-                overflow-x: auto;
-            }
+                         .format-example pre {
+                 color: #e2e8f0;
+                 font-family: 'Courier New', monospace;
+                 font-size: 0.9em;
+                 overflow-x: auto;
+             }
+             
+             @media (max-width: 768px) {
+                 .container {
+                     padding: 15px;
+                 }
+                 
+                 .header {
+                     padding: 30px 20px;
+                     margin-bottom: 20px;
+                 }
+                 
+                 .header h1 {
+                     font-size: 2.2em;
+                 }
+                 
+                 .header p {
+                     font-size: 1.1em;
+                 }
+                 
+                 .docs-container {
+                     padding: 25px 20px;
+                 }
+                 
+                 .section {
+                     margin-bottom: 30px;
+                 }
+                 
+                 .section h3 {
+                     font-size: 1.3em;
+                     margin-bottom: 15px;
+                 }
+                 
+                 .feature-grid {
+                     grid-template-columns: 1fr;
+                     gap: 15px;
+                     margin-bottom: 25px;
+                 }
+                 
+                 .feature-card {
+                     padding: 20px 15px;
+                 }
+                 
+                 .feature-icon {
+                     font-size: 1.8em;
+                     margin-bottom: 12px;
+                 }
+                 
+                 .feature-title {
+                     font-size: 1.1em;
+                     margin-bottom: 8px;
+                 }
+                 
+                 .feature-description {
+                     font-size: 0.9em;
+                     margin-bottom: 12px;
+                 }
+                 
+                 .feature-list li {
+                     font-size: 0.9em;
+                     margin-bottom: 4px;
+                     padding-left: 18px;
+                 }
+                 
+                 .format-example {
+                     padding: 15px;
+                     margin: 15px 0;
+                 }
+                 
+                 .format-example h4 {
+                     font-size: 1em;
+                     margin-bottom: 8px;
+                 }
+                 
+                 .format-example pre {
+                     font-size: 0.8em;
+                 }
+             }
+             
+             @media (max-width: 480px) {
+                 .container {
+                     padding: 10px;
+                 }
+                 
+                 .header {
+                     padding: 25px 15px;
+                     border-radius: 15px;
+                 }
+                 
+                 .header h1 {
+                     font-size: 1.8em;
+                 }
+                 
+                 .header p {
+                     font-size: 1em;
+                 }
+                 
+                 .docs-container {
+                     padding: 20px 15px;
+                     border-radius: 15px;
+                 }
+                 
+                 .section {
+                     margin-bottom: 25px;
+                 }
+                 
+                 .section h3 {
+                     font-size: 1.2em;
+                     margin-bottom: 12px;
+                 }
+                 
+                 .feature-grid {
+                     gap: 12px;
+                     margin-bottom: 20px;
+                 }
+                 
+                 .feature-card {
+                     padding: 15px 12px;
+                     border-radius: 12px;
+                 }
+                 
+                 .feature-icon {
+                     font-size: 1.6em;
+                     margin-bottom: 10px;
+                 }
+                 
+                 .feature-title {
+                     font-size: 1em;
+                     margin-bottom: 6px;
+                 }
+                 
+                 .feature-description {
+                     font-size: 0.85em;
+                     margin-bottom: 10px;
+                 }
+                 
+                 .feature-list li {
+                     font-size: 0.85em;
+                     margin-bottom: 3px;
+                     padding-left: 15px;
+                 }
+                 
+                 .format-example {
+                     padding: 12px;
+                     margin: 12px 0;
+                     border-radius: 8px;
+                 }
+                 
+                 .format-example h4 {
+                     font-size: 0.9em;
+                     margin-bottom: 6px;
+                 }
+                 
+                 .format-example pre {
+                     font-size: 0.75em;
+                 }
+             }
         </style>
     </head>
     <body>
@@ -1613,13 +2155,102 @@ def ai_summary(upload_id: int):
                     font-weight: 400;
                 }}
                 
-                @media (max-width: 768px) {{
-                    .container {{ padding: 20px 15px; }}
-                    .header {{ padding: 30px 20px; }}
-                    .header h1 {{ font-size: 2.2em; }}
-                    .metrics-grid {{ grid-template-columns: repeat(2, 1fr); }}
-                    .back-btn {{ position: relative; top: auto; left: auto; margin-bottom: 20px; }}
-                }}
+                                 @media (max-width: 768px) {{
+                     .container {{ padding: 20px 15px; }}
+                     .header {{ padding: 30px 20px; }}
+                     .header h1 {{ font-size: 2.2em; }}
+                     .metrics-grid {{ grid-template-columns: repeat(2, 1fr); }}
+                     .back-btn {{ position: relative; top: auto; left: auto; margin-bottom: 20px; }}
+                     
+                     .section {{
+                         padding: 25px 20px;
+                         margin-bottom: 20px;
+                     }}
+                     
+                     .section h3 {{
+                         font-size: 1.3em;
+                         margin-bottom: 20px;
+                     }}
+                     
+                     .metric-card {{
+                         padding: 20px 15px;
+                     }}
+                     
+                     .metric-value {{
+                         font-size: 1.8em;
+                     }}
+                     
+                     .metric-label {{
+                         font-size: 0.8em;
+                     }}
+                     
+                     .insights-list li, .recommendations-list li {{
+                         padding: 15px;
+                         margin-bottom: 12px;
+                     }}
+                     
+                     .executive-summary {{
+                         padding: 20px;
+                     }}
+                     
+                     .executive-summary p {{
+                         font-size: 1em;
+                     }}
+                 }}
+                 
+                 @media (max-width: 480px) {{
+                     .container {{ padding: 15px 10px; }}
+                     .header {{ padding: 25px 15px; }}
+                     .header h1 {{ font-size: 1.8em; }}
+                     .header p {{ font-size: 1.1em; }}
+                     .metrics-grid {{ grid-template-columns: 1fr; }}
+                     
+                     .section {{
+                         padding: 20px 15px;
+                         border-radius: 15px;
+                     }}
+                     
+                     .section h3 {{
+                         font-size: 1.2em;
+                         margin-bottom: 15px;
+                     }}
+                     
+                     .metric-card {{
+                         padding: 15px 12px;
+                     }}
+                     
+                     .metric-value {{
+                         font-size: 1.5em;
+                     }}
+                     
+                     .metric-label {{
+                         font-size: 0.75em;
+                     }}
+                     
+                     .insights-list li, .recommendations-list li {{
+                         padding: 12px;
+                         margin-bottom: 10px;
+                         font-size: 0.9em;
+                     }}
+                     
+                     .executive-summary {{
+                         padding: 15px;
+                     }}
+                     
+                     .executive-summary p {{
+                         font-size: 0.9em;
+                     }}
+                     
+                     .ai-status {{
+                         padding: 15px;
+                         font-size: 0.9em;
+                     }}
+                     
+                     .severity-badge {{
+                         padding: 8px 16px;
+                         font-size: 0.85em;
+                     }}
+                 }}
             </style>
         </head>
         <body>
@@ -1994,21 +2625,160 @@ def list_uploads_html():
                 color: #e2e8f0;
             }}
             
-            @media (max-width: 768px) {{
-                .upload-header {{
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 10px;
-                }}
-                
-                .upload-stats {{
-                    grid-template-columns: repeat(3, 1fr);
-                }}
-                
-                .upload-actions {{
-                    justify-content: center;
-                }}
-            }}
+                         @media (max-width: 768px) {{
+                 .container {{
+                     padding: 15px;
+                 }}
+                 
+                 .header {{
+                     padding: 30px 20px;
+                     margin-bottom: 20px;
+                 }}
+                 
+                 .header h1 {{
+                     font-size: 2.2em;
+                 }}
+                 
+                 .header p {{
+                     font-size: 1.1em;
+                 }}
+                 
+                 .uploads-container {{
+                     padding: 25px 20px;
+                 }}
+                 
+                 .uploads-header {{
+                     flex-direction: column;
+                     align-items: flex-start;
+                     gap: 15px;
+                     margin-bottom: 25px;
+                 }}
+                 
+                 .uploads-title {{
+                     font-size: 1.3em;
+                 }}
+                 
+                 .upload-item {{
+                     padding: 20px 15px;
+                     margin-bottom: 15px;
+                 }}
+                 
+                 .upload-header {{
+                     flex-direction: column;
+                     align-items: flex-start;
+                     gap: 10px;
+                     margin-bottom: 12px;
+                 }}
+                 
+                 .upload-header h4 {{
+                     font-size: 1.1em;
+                 }}
+                 
+                 .upload-stats {{
+                     grid-template-columns: repeat(3, 1fr);
+                     gap: 12px;
+                     margin-bottom: 15px;
+                 }}
+                 
+                 .stat {{
+                     padding: 12px 10px;
+                 }}
+                 
+                 .stat-value {{
+                     font-size: 1.3em;
+                 }}
+                 
+                 .stat-label {{
+                     font-size: 0.7em;
+                 }}
+                 
+                 .upload-actions {{
+                     flex-direction: column;
+                     gap: 10px;
+                     justify-content: center;
+                 }}
+                 
+                 .action-link {{
+                     padding: 12px 16px;
+                     font-size: 0.9em;
+                     justify-content: center;
+                 }}
+             }}
+             
+             @media (max-width: 480px) {{
+                 .container {{
+                     padding: 10px;
+                 }}
+                 
+                 .header {{
+                     padding: 25px 15px;
+                     border-radius: 15px;
+                 }}
+                 
+                 .header h1 {{
+                     font-size: 1.8em;
+                 }}
+                 
+                 .header p {{
+                     font-size: 1em;
+                 }}
+                 
+                 .uploads-container {{
+                     padding: 20px 15px;
+                     border-radius: 15px;
+                 }}
+                 
+                 .uploads-header {{
+                     margin-bottom: 20px;
+                 }}
+                 
+                 .uploads-title {{
+                     font-size: 1.2em;
+                 }}
+                 
+                 .upload-count {{
+                     padding: 6px 12px;
+                     font-size: 0.85em;
+                 }}
+                 
+                 .upload-item {{
+                     padding: 15px 12px;
+                     margin-bottom: 12px;
+                     border-radius: 12px;
+                 }}
+                 
+                 .upload-header h4 {{
+                     font-size: 1em;
+                 }}
+                 
+                 .upload-date {{
+                     font-size: 0.8em;
+                 }}
+                 
+                 .upload-stats {{
+                     grid-template-columns: repeat(3, 1fr);
+                     gap: 8px;
+                     margin-bottom: 12px;
+                 }}
+                 
+                 .stat {{
+                     padding: 10px 8px;
+                     border-radius: 8px;
+                 }}
+                 
+                 .stat-value {{
+                     font-size: 1.2em;
+                 }}
+                 
+                 .stat-label {{
+                     font-size: 0.65em;
+                 }}
+                 
+                 .action-link {{
+                     padding: 10px 12px;
+                     font-size: 0.85em;
+                 }}
+             }}
         </style>
     </head>
     <body>
