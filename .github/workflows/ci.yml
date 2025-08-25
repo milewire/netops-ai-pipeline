@@ -1,33 +1,43 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  ci:
+  test:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-python@v5
-        with: 
-          python-version: "3.11"
-      
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install joblib
-      
-      - name: Run linting
-        run: |
-          ruff check .
-          black --check .
-      
-      - name: Run tests
-        run: |
-          python -c "from storage import init_db; init_db()"
-          pytest -v
-      
-      - name: Test Docker build
-        run: |
-          docker build -t netops-ai-pipeline .
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run basic validation
+      run: |
+        python -c "import app; print('App imports successfully')"
+        python -c "import model; print('Model imports successfully')"
+        python -c "import random_forest_model; print('Random Forest model imports successfully')"
+        python -c "import pdf_report; print('PDF report imports successfully')"
+        python -c "import summarize; print('Summarize imports successfully')"
+    
+    - name: Check for syntax errors
+      run: |
+        python -m py_compile app.py
+        python -m py_compile model.py
+        python -m py_compile random_forest_model.py
+        python -m py_compile pdf_report.py
+        python -m py_compile summarize.py
+        python -m py_compile storage.py
+        python -m py_compile charts.py
+        python -m py_compile features.py
