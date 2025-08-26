@@ -1427,22 +1427,52 @@ def system_status_page():
     """User-friendly system status and overview page"""
     return """
     <!DOCTYPE html>
-    <html>
+    <html class="light">
     <head>
         <title>System Status - NetOps AI Pipeline</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                50: '#eff6ff',
+                                100: '#dbeafe',
+                                200: '#bfdbfe',
+                                300: '#93c5fd',
+                                400: '#60a5fa',
+                                500: '#3b82f6',
+                                600: '#2563eb',
+                                700: '#1d4ed8',
+                                800: '#1e40af',
+                                900: '#1e3a8a',
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
         <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
             
             body { 
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
                 min-height: 100vh;
-                color: #e2e8f0;
+                color: #1e293b;
                 line-height: 1.6;
+                transition: all 0.3s ease;
+            }
+            
+            .dark body {
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                color: #e2e8f0;
             }
             
             .container { 
@@ -1491,13 +1521,49 @@ def system_status_page():
                 transform: translateY(-2px);
             }
             
-            .status-container {
-                background: rgba(255,255,255,0.05);
+            .theme-toggle {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255,255,255,0.1);
+                color: #ffffff;
+                padding: 10px;
+                border-radius: 10px;
+                text-decoration: none;
+                transition: all 0.3s ease;
                 backdrop-filter: blur(10px);
-                border: 1px solid rgba(255,255,255,0.1);
+                border: none;
+                cursor: pointer;
+                font-size: 1.2em;
+            }
+            
+            .theme-toggle:hover {
+                background: rgba(255,255,255,0.2);
+                transform: translateY(-2px);
+            }
+            
+            .dark .theme-toggle {
+                background: rgba(0,0,0,0.2);
+                color: #e2e8f0;
+            }
+            
+            .dark .theme-toggle:hover {
+                background: rgba(0,0,0,0.3);
+            }
+            
+            .status-container {
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 20px;
                 padding: 30px;
                 margin-bottom: 30px;
+                transition: all 0.3s ease;
+            }
+            
+            .dark .status-container {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }
             
             .metrics-grid {
@@ -1508,12 +1574,17 @@ def system_status_page():
             }
             
             .metric-card {
-                background: rgba(255,255,255,0.05);
-                border: 1px solid rgba(255,255,255,0.1);
+                background: rgba(255,255,255,0.1);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 15px;
                 padding: 25px;
                 text-align: center;
                 transition: all 0.3s ease;
+            }
+            
+            .dark .metric-card {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }
             
             .metric-card:hover {
@@ -1643,6 +1714,10 @@ def system_status_page():
             <a href="/" class="back-btn">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
+            
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
 
             <div class="header">
                 <h1><i class="fas fa-chart-bar"></i> System Status</h1>
@@ -1749,6 +1824,41 @@ def system_status_page():
                 </div>
             </div>
         </div>
+        
+        <script>
+            // Theme toggle functionality
+            function toggleTheme() {
+                const html = document.documentElement;
+                const themeIcon = document.getElementById('theme-icon');
+                
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fas fa-moon';
+            }
+        </script>
     </body>
     </html>
     """
@@ -3210,6 +3320,10 @@ def get_predictions_html(upload_id: int):
             <a href="/" class="back-btn">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
+            
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
             
             <div class="container">
                 <div class="header">
