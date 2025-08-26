@@ -73,7 +73,6 @@ test_*.py
 debug_*.py
 
 # IDE
-.vscode/settings.json
 .idea/
 *.swp
 *.swo

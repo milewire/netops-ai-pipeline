@@ -9,7 +9,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
     steps:
       - uses: actions/checkout@v5
       
