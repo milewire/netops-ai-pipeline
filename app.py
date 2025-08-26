@@ -55,6 +55,7 @@ def home():
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
+                darkMode: 'class',
                 theme: {
                     extend: {
                         fontFamily: {
@@ -64,6 +65,20 @@ def home():
                             'fade-in': 'fadeIn 0.5s ease-in-out',
                             'slide-up': 'slideUp 0.3s ease-out',
                             'pulse-slow': 'pulse 3s infinite',
+                        },
+                        colors: {
+                            brand: {
+                                50: '#f0f9ff',
+                                100: '#e0f2fe',
+                                200: '#bae6fd',
+                                300: '#7dd3fc',
+                                400: '#38bdf8',
+                                500: '#0ea5e9',
+                                600: '#0284c7',
+                                700: '#0369a1',
+                                800: '#075985',
+                                900: '#0c4a6e',
+                            }
                         }
                     }
                 }
@@ -99,6 +114,19 @@ def home():
                 background: rgba(255, 255, 255, 0.5);
             }
             
+            /* Dark mode scrollbar */
+            .dark ::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1);
+            }
+            
+            .dark ::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.2);
+            }
+            
+            .dark ::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
             /* Smooth transitions for all elements */
             * {
                 transition: all 0.2s ease-in-out;
@@ -109,19 +137,47 @@ def home():
                 outline: 2px solid rgba(59, 130, 246, 0.5);
                 outline-offset: 2px;
             }
+            
+            /* Theme toggle animation */
+            .theme-toggle {
+                transition: transform 0.3s ease;
+            }
+            
+            .theme-toggle:hover {
+                transform: scale(1.1);
+            }
         </style>
     </head>
-    <body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 min-h-screen font-inter text-slate-200">
+    <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-700 min-h-screen font-inter text-slate-800 dark:text-slate-200 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+            <!-- Header with Theme Toggle -->
+            <div class="flex justify-between items-center mb-8">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="theme-toggle bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <i id="themeIcon" class="fas fa-moon text-slate-600 dark:text-slate-300 text-xl"></i>
+                </button>
+                
+                <!-- Brand Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-brain text-white text-lg"></i>
+                    </div>
+                    <div class="text-right">
+                        <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-200">NetOps AI</h2>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Enterprise Pipeline</p>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Header Section -->
-            <div class="relative bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 rounded-3xl p-8 md:p-12 mb-8 shadow-2xl overflow-hidden">
+            <div class="relative bg-gradient-to-r from-brand-500 via-brand-400 to-brand-300 dark:from-brand-600 dark:via-brand-500 dark:to-brand-400 rounded-3xl p-8 md:p-12 mb-8 shadow-2xl overflow-hidden">
                 <div class="absolute inset-0 bg-black/10"></div>
                 <div class="relative z-10 text-center">
                     <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 flex items-center justify-center gap-4">
-                        <i class="fas fa-brain text-blue-200"></i>
+                        <i class="fas fa-brain text-brand-200"></i>
                         NetOps AI Pipeline
                     </h1>
-                    <p class="text-xl md:text-2xl text-blue-100 font-light">
+                    <p class="text-xl md:text-2xl text-brand-100 font-light">
                         Enterprise-Grade Network Intelligence & Anomaly Detection
                     </p>
                 </div>
@@ -129,69 +185,69 @@ def home():
             
             <!-- Stats Bar -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 group">
-                    <div class="text-3xl md:text-4xl text-blue-400 mb-3 group-hover:scale-110 transition-transform">
+                <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white dark:hover:bg-white/10 hover:border-brand-300/50 dark:hover:border-white/20 hover:-translate-y-1 group shadow-lg">
+                    <div class="text-3xl md:text-4xl text-brand-500 dark:text-brand-400 mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="text-2xl md:text-3xl font-bold text-white mb-1">99.9%</div>
-                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Accuracy</div>
+                    <div class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-1">99.9%</div>
+                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Accuracy</div>
                 </div>
                 
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 group">
-                    <div class="text-3xl md:text-4xl text-green-400 mb-3 group-hover:scale-110 transition-transform">
+                <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white dark:hover:bg-white/10 hover:border-green-300/50 dark:hover:border-white/20 hover:-translate-y-1 group shadow-lg">
+                    <div class="text-3xl md:text-4xl text-green-500 dark:text-green-400 mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <div class="text-2xl md:text-3xl font-bold text-white mb-1">&lt; 2s</div>
-                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Processing</div>
+                    <div class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-1">&lt; 2s</div>
+                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Processing</div>
                 </div>
                 
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 group">
-                    <div class="text-3xl md:text-4xl text-purple-400 mb-3 group-hover:scale-110 transition-transform">
+                <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white dark:hover:bg-white/10 hover:border-purple-300/50 dark:hover:border-white/20 hover:-translate-y-1 group shadow-lg">
+                    <div class="text-3xl md:text-4xl text-purple-500 dark:text-purple-400 mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="text-lg md:text-xl font-bold text-white mb-1">Enterprise</div>
-                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Security</div>
+                    <div class="text-lg md:text-xl font-bold text-slate-800 dark:text-white mb-1">Enterprise</div>
+                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Security</div>
                 </div>
                 
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 group">
-                    <div class="text-3xl md:text-4xl text-cyan-400 mb-3 group-hover:scale-110 transition-transform">
+                <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white dark:hover:bg-white/10 hover:border-cyan-300/50 dark:hover:border-white/20 hover:-translate-y-1 group shadow-lg">
+                    <div class="text-3xl md:text-4xl text-cyan-500 dark:text-cyan-400 mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <div class="text-lg md:text-xl font-bold text-white mb-1">AI-Powered</div>
-                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Insights</div>
+                    <div class="text-lg md:text-xl font-bold text-slate-800 dark:text-white mb-1">AI-Powered</div>
+                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Insights</div>
                 </div>
             </div>
             
             <!-- Main Content -->
             <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
                 <!-- KPI Upload Section -->
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-8 transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-chart-bar text-blue-400"></i>
+                <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-3xl p-6 md:p-8 transition-all duration-300 hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:shadow-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-3">
+                        <i class="fas fa-chart-bar text-brand-500 dark:text-brand-400"></i>
                         KPI Anomaly Detection
                     </h3>
-                    <p class="text-slate-300 mb-6 leading-relaxed">
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                         Upload network performance data to receive AI-powered insights, anomaly detection, and actionable recommendations for network optimization.
                     </p>
                     
                     <form id="kpiForm">
-                        <div class="border-2 border-dashed border-blue-500/30 rounded-2xl p-8 text-center bg-blue-500/5 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/10 mb-6">
-                            <input type="file" name="file" accept=".csv" required class="w-full text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 transition-colors">
-                            <p class="mt-4 text-sm text-slate-400">
+                        <div class="border-2 border-dashed border-brand-500/30 dark:border-brand-500/30 rounded-2xl p-8 text-center bg-brand-500/5 dark:bg-brand-500/5 transition-all duration-300 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-brand-500/10 dark:hover:bg-brand-500/10 mb-6">
+                            <input type="file" name="file" accept=".csv" required class="w-full text-slate-700 dark:text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-500 file:text-white hover:file:bg-brand-600 transition-colors">
+                            <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
                                 <i class="fas fa-info-circle mr-2"></i>
                                 Expected format: cell_id, timestamp, PRB_Util, RRC_Conn, Throughput_Mbps, BLER
                             </p>
                         </div>
                         
-                        <div class="bg-white/5 rounded-xl p-4 mb-6">
-                            <label class="flex items-center gap-3 cursor-pointer text-slate-200 font-medium">
-                                <input type="checkbox" name="train_if_missing" value="true" checked class="w-5 h-5 text-blue-500 bg-slate-700 border-slate-600 rounded focus:ring-blue-500 focus:ring-2">
-                                <i class="fas fa-cog text-blue-400"></i>
+                        <div class="bg-slate-50/80 dark:bg-white/5 rounded-xl p-4 mb-6">
+                            <label class="flex items-center gap-3 cursor-pointer text-slate-700 dark:text-slate-200 font-medium">
+                                <input type="checkbox" name="train_if_missing" value="true" checked class="w-5 h-5 text-brand-500 bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-600 rounded focus:ring-brand-500 focus:ring-2">
+                                <i class="fas fa-cog text-brand-500 dark:text-brand-400"></i>
                                 Train AI model if not available (recommended)
                             </label>
                         </div>
                         
-                        <button type="submit" id="kpiBtn" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-3">
+                        <button type="submit" id="kpiBtn" class="w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-3">
                             <i class="fas fa-search"></i>
                             Analyze with AI
                         </button>
@@ -201,19 +257,19 @@ def home():
                 </div>
                 
                 <!-- Log Analysis Section -->
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-8 transition-all duration-300 hover:border-green-500/30 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-file-alt text-green-400"></i>
+                <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-3xl p-6 md:p-8 transition-all duration-300 hover:border-green-500/30 dark:hover:border-green-500/30 hover:shadow-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-3">
+                        <i class="fas fa-file-alt text-green-500 dark:text-green-400"></i>
                         Log Analysis
                     </h3>
-                    <p class="text-slate-300 mb-6 leading-relaxed">
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                         Upload system logs for intelligent incident detection, error categorization, and automated alert generation with severity assessment.
                     </p>
                     
                     <form id="logForm">
-                        <div class="border-2 border-dashed border-green-500/30 rounded-2xl p-8 text-center bg-green-500/5 transition-all duration-300 hover:border-green-500/50 hover:bg-green-500/10 mb-6">
-                            <input type="file" name="file" accept=".log,.txt" required class="w-full text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-500 file:text-white hover:file:bg-green-600 transition-colors">
-                            <p class="mt-4 text-sm text-slate-400">
+                        <div class="border-2 border-dashed border-green-500/30 dark:border-green-500/30 rounded-2xl p-8 text-center bg-green-500/5 dark:bg-green-500/5 transition-all duration-300 hover:border-green-500/50 dark:hover:border-green-500/50 hover:bg-green-500/10 dark:hover:bg-green-500/10 mb-6">
+                            <input type="file" name="file" accept=".log,.txt" required class="w-full text-slate-700 dark:text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-500 file:text-white hover:file:bg-green-600 transition-colors">
+                            <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
                                 <i class="fas fa-info-circle mr-2"></i>
                                 Supports ERROR, WARN, CRIT, ALARM, INFO log levels
                             </p>
@@ -230,21 +286,21 @@ def home():
             </div>
             
             <!-- Footer -->
-            <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 text-center">
-                <h3 class="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-3">
-                    <i class="fas fa-tools text-slate-400"></i>
+            <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-3xl p-8 text-center shadow-lg">
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center justify-center gap-3">
+                    <i class="fas fa-tools text-brand-500 dark:text-slate-400"></i>
                     Enterprise Tools
                 </h3>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="/system-status" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 hover:text-blue-200 px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
+                    <a href="/system-status" class="bg-brand-500/20 dark:bg-blue-500/20 hover:bg-brand-500/30 dark:hover:bg-blue-500/30 text-brand-600 dark:text-blue-300 hover:text-brand-700 dark:hover:text-blue-200 px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
                         <i class="fas fa-chart-bar"></i>
                         System Status
                     </a>
-                    <a href="/health" class="bg-green-500/20 hover:bg-green-500/30 text-green-300 hover:text-green-200 px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
+                    <a href="/health" class="bg-green-500/20 hover:bg-green-500/30 text-green-600 dark:text-green-300 hover:text-green-700 dark:hover:text-green-200 px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
                         <i class="fas fa-heartbeat"></i>
                         Health Check
                     </a>
-                    <a href="/uploads" class="bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 hover:text-purple-200 px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
+                    <a href="/uploads" class="bg-purple-500/20 hover:bg-purple-500/30 text-purple-600 dark:text-purple-300 hover:text-purple-700 dark:hover:text-purple-200 px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
                         <i class="fas fa-list"></i>
                         View Uploads
                     </a>
@@ -439,6 +495,32 @@ def home():
                     showError('logForm', 'logBtn', error.message);
                 }
             };
+            
+            // Theme Toggle Functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            // Check for saved theme preference or default to light mode
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle('dark', currentTheme === 'dark');
+            updateThemeIcon(currentTheme);
+            
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'fas fa-sun text-slate-300 text-xl';
+                } else {
+                    themeIcon.className = 'fas fa-moon text-slate-600 text-xl';
+                }
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                const newTheme = isDark ? 'light' : 'dark';
+                
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
         </script>
     </body>
     </html>
