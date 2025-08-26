@@ -11,17 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        run: |
-          echo "Checking out code..."
-      
+        uses: actions/checkout@v3
+        
       - name: Setup Python
-        run: |
-          echo "Setting up Python..."
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
       
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
-      
+          pip install joblib
+          pip install ruff black pytest
+        
       - name: Test imports
         run: |
           python -c "import app; print('App imports successfully')"
@@ -34,3 +37,7 @@ jobs:
         run: |
           python -c "from storage import init_db; init_db()"
           pytest -v
+      
+      - name: Test Docker build
+        run: |
+          docker build -t netops-ai-pipeline .
