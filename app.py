@@ -1602,6 +1602,10 @@ def system_status_page():
                 font-size: 1.2em;
                 font-weight: 600;
                 margin-bottom: 10px;
+                color: #1e293b;
+            }
+            
+            .dark .metric-title {
                 color: #ffffff;
             }
             
@@ -1625,10 +1629,14 @@ def system_status_page():
             }
             
             .features-section h3 {
-                color: #ffffff;
+                color: #1e293b;
                 margin-bottom: 20px;
                 font-size: 1.5em;
                 text-align: center;
+            }
+            
+            .dark .features-section h3 {
+                color: #ffffff;
             }
             
             .features-grid {
@@ -1653,8 +1661,12 @@ def system_status_page():
             }
             
             .feature-text {
-                color: #e2e8f0;
+                color: #1e293b;
                 font-weight: 500;
+            }
+            
+            .dark .feature-text {
+                color: #e2e8f0;
             }
             
             .quick-actions {
