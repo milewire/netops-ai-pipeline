@@ -18,6 +18,10 @@ jobs:
           pip install -r requirements.txt
           pip install joblib
       
+      - name: Install linting tools
+        run: |
+          pip install ruff black
+      
       - name: Run linting
         run: |
           ruff check .
