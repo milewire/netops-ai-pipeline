@@ -2566,7 +2566,7 @@ def ai_summary(upload_id: int):
                 
                 .severity-badge {{
                     display: inline-block;
-                    background: {severity_color}15;
+                    background: {severity_color}26;
                     color: {severity_color};
                     padding: 12px 24px;
                     border-radius: 25px;
@@ -3972,39 +3972,39 @@ def get_predictions_html(upload_id: int):
                 
                 <div class="content-grid">
                     <div class="card">
-                        <h2><i class="fas fa-chart-pie"></i> Network Status Predictions</h2>
+                        <h2 style="color: #000000 !important;"><i class="fas fa-chart-pie"></i> Network Status Predictions</h2>
                         
                         <div class="metric-grid">
                             <div class="metric">
                                 <div class="metric-value">{summary['most_common_status']}</div>
-                                <div class="metric-label">Most Common Status</div>
+                                <div class="metric-label" style="color: #000000 !important;">Most Common Status</div>
                             </div>
                             <div class="metric">
                                 <div class="metric-value">{summary['average_confidence']:.1f}%</div>
-                                <div class="metric-label">Average Confidence</div>
+                                <div class="metric-label" style="color: #000000 !important;">Average Confidence</div>
                             </div>
                         </div>
                         
-                        <h3 style="margin-bottom: 15px; color: #e2e8f0;">Status Distribution</h3>
+                        <h3 style="margin-bottom: 15px; color: #000000 !important;">Status Distribution</h3>
                         {status_dist_html}
                     </div>
                     
                     <div class="card">
-                        <h2><i class="fas fa-chart-line"></i> Performance Predictions</h2>
+                        <h2 style="color: #000000 !important;"><i class="fas fa-chart-line"></i> Performance Predictions</h2>
                         
                         <div class="metric-grid">
                             <div class="metric">
                                 <div class="metric-value">{summary['average_predicted_throughput']:.1f}</div>
-                                <div class="metric-label">Avg Predicted Throughput (Mbps)</div>
+                                <div class="metric-label" style="color: #000000 !important;">Avg Predicted Throughput (Mbps)</div>
                             </div>
                             <div class="metric">
                                 <div class="metric-value">{len(df)}</div>
-                                <div class="metric-label">Data Points Analyzed</div>
+                                <div class="metric-label" style="color: #000000 !important;">Data Points Analyzed</div>
                             </div>
                         </div>
                         
-                        <h3 style="margin-bottom: 15px; color: #e2e8f0;">Feature Importance</h3>
-                        <p style="margin-bottom: 20px; opacity: 0.8;">Which KPIs matter most for predictions</p>
+                        <h3 style="margin-bottom: 15px; color: #000000 !important;">Feature Importance</h3>
+                        <p style="margin-bottom: 20px; color: #000000 !important;">Which KPIs matter most for predictions</p>
                         {feature_importance_html}
                     </div>
                 </div>
