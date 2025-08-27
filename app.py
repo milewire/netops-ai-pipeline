@@ -354,7 +354,7 @@ def home():
                      
                                          resultDiv.innerHTML = `
                         <div class="bg-green-100 border-l-4 border-green-500 rounded-xl p-6 mt-6 animate-slide-up">
-                            <h4 class="text-xl font-bold text-black mb-4 flex items-center gap-3">
+                            <h4 class="text-xl font-bold text-black !text-black mb-4 flex items-center gap-3" style="color: #000000 !important;">
                                 <i class="fas fa-check-circle text-green-600"></i>
                                 AI Analysis Complete!
                             </h4>
@@ -364,27 +364,27 @@ def home():
                                                          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                                 <div class="bg-blue-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-blue-600 mb-1">${data.total_samples}</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Total Samples</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Total Samples</div>
                                 </div>
                                 <div class="bg-red-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-red-600 mb-1">${data.summary['-1'] || 0}</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Anomalies</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Anomalies</div>
                                 </div>
                                 <div class="bg-green-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-green-600 mb-1">${data.summary['1'] || 0}</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Normal</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Normal</div>
                                 </div>
                                 <div class="bg-blue-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-blue-600 mb-1">${anomalyRate}%</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Anomaly Rate</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Anomaly Rate</div>
                                 </div>
                             </div>
                              <div class="mb-6">
-                                 <h5 class="text-black font-semibold mb-3 flex items-center gap-2">
+                                 <h5 class="text-black !text-black font-semibold mb-3 flex items-center gap-2" style="color: #000000 !important;">
                                      <i class="fas fa-lightbulb text-yellow-600"></i>
                                      Quick Insights:
                                  </h5>
-                                 <ul class="text-black space-y-2 pl-6 font-medium">
+                                 <ul class="text-black !text-black space-y-2 pl-6 font-medium" style="color: #000000 !important;">
                                      ${insightsHtml}
                                  </ul>
                              </div>
@@ -411,31 +411,31 @@ def home():
                 } else {
                     resultDiv.innerHTML = `
                         <div class="bg-green-100 border-l-4 border-green-500 rounded-xl p-6 mt-6 animate-slide-up">
-                            <h4 class="text-xl font-bold text-black mb-4 flex items-center gap-3">
+                            <h4 class="text-xl font-bold text-black !text-black mb-4 flex items-center gap-3" style="color: #000000 !important;">
                                 <i class="fas fa-check-circle text-green-600"></i>
                                 Log Analysis Complete!
                             </h4>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                                 <div class="bg-red-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-red-600 mb-1">${data.incident_counts.critical_errors}</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Critical</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Critical</div>
                                 </div>
                                 <div class="bg-orange-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-orange-600 mb-1">${data.incident_counts.errors}</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Errors</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Errors</div>
                                 </div>
                                 <div class="bg-yellow-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-yellow-600 mb-1">${data.incident_counts.warnings}</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Warnings</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Warnings</div>
                                 </div>
                                 <div class="bg-cyan-50 rounded-xl p-4 text-center">
                                     <div class="text-2xl font-bold text-cyan-600 mb-1">${data.incident_counts.alarms}</div>
-                                    <div class="text-sm text-black font-medium uppercase tracking-wider">Alarms</div>
+                                    <div class="text-sm text-black !text-black font-medium uppercase tracking-wider" style="color: #000000 !important;">Alarms</div>
                                 </div>
                             </div>
                             <div class="bg-gray-50 rounded-xl p-4">
-                                <p class="text-black font-medium">
-                                    <span class="font-semibold text-black">AI Summary:</span> ${data.summary}
+                                <p class="text-black !text-black font-medium" style="color: #000000 !important;">
+                                    <span class="font-semibold text-black !text-black" style="color: #000000 !important;">AI Summary:</span> ${data.summary}
                                 </p>
                             </div>
                         </div>
@@ -2454,10 +2454,10 @@ def ai_summary(upload_id: int):
                     transition: all 0.3s ease;
                 }}
                 
-                .dark body {
+                .dark body {{
                     background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
                     color: #f1f5f9;
-                }
+                }}
                 
                 .container {{ 
                     max-width: 1200px; 
@@ -3717,10 +3717,10 @@ def get_predictions_html(upload_id: int):
                     transition: all 0.3s ease;
                 }}
                 
-                .dark body {
+                .dark body {{
                     background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
                     color: #f1f5f9;
-                }
+                }}
                 
                 .container {{ 
                     max-width: 1200px; 
