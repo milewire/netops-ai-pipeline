@@ -315,7 +315,7 @@ def home():
                 
                 btn.disabled = true;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-                resultDiv.innerHTML = '<div class="bg-amber-500/10 border-l-4 border-amber-500 rounded-xl p-6 text-center animate-pulse"><i class="fas fa-cog fa-spin text-amber-400 text-2xl mb-3"></i><div class="text-amber-300 font-medium">AI is analyzing your data...</div></div>';
+                resultDiv.innerHTML = '<div class="bg-amber-100 border-l-4 border-amber-500 rounded-xl p-6 text-center animate-pulse"><i class="fas fa-cog fa-spin text-amber-600 text-2xl mb-3"></i><div class="text-amber-800 font-medium">AI is analyzing your data...</div></div>';
             }
             
             function showSuccess(formId, btnId, data, isKpi = true) {
@@ -384,7 +384,7 @@ def home():
                                      <i class="fas fa-lightbulb text-yellow-600"></i>
                                      Quick Insights:
                                  </h5>
-                                 <ul class="text-gray-800 space-y-2 pl-6">
+                                 <ul class="text-gray-900 space-y-2 pl-6 font-medium">
                                      ${insightsHtml}
                                  </ul>
                              </div>
@@ -434,8 +434,8 @@ def home():
                                 </div>
                             </div>
                             <div class="bg-gray-50 rounded-xl p-4">
-                                <p class="text-gray-700">
-                                    <span class="font-semibold text-gray-800">AI Summary:</span> ${data.summary}
+                                <p class="text-gray-900 font-medium">
+                                    <span class="font-semibold text-gray-900">AI Summary:</span> ${data.summary}
                                 </p>
                             </div>
                         </div>
@@ -449,7 +449,7 @@ def home():
                 
                 btn.disabled = false;
                 btn.innerHTML = formId === 'kpiForm' ? '<i class="fas fa-search"></i> Analyze with AI' : '<i class="fas fa-search"></i> Analyze Logs';
-                resultDiv.innerHTML = `<div class="bg-red-500/10 border-l-4 border-red-500 rounded-xl p-6 mt-6 animate-slide-up"><i class="fas fa-exclamation-triangle text-red-400 text-2xl mb-3"></i><div class="text-red-300 font-medium">Error: ${error}</div></div>`;
+                resultDiv.innerHTML = `<div class="bg-red-100 border-l-4 border-red-500 rounded-xl p-6 mt-6 animate-slide-up"><i class="fas fa-exclamation-triangle text-red-600 text-2xl mb-3"></i><div class="text-red-800 font-medium">Error: ${error}</div></div>`;
             }
             
             document.getElementById('kpiForm').onsubmit = async (e) => {
