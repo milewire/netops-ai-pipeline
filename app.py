@@ -352,56 +352,56 @@ def home():
                      const severityBorderColor = severity === 'HIGH' ? 'border-red-500' : severity === 'MEDIUM' ? 'border-amber-500' : 'border-green-500';
                      const severityTextColor = severity === 'HIGH' ? 'text-red-400' : severity === 'MEDIUM' ? 'text-amber-400' : 'text-green-400';
                      
-                     resultDiv.innerHTML = `
-                         <div class="bg-green-500/10 border-l-4 border-green-500 rounded-xl p-6 mt-6 animate-slide-up">
-                             <h4 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                                 <i class="fas fa-check-circle text-green-400"></i>
-                                 AI Analysis Complete!
-                             </h4>
+                                         resultDiv.innerHTML = `
+                        <div class="bg-green-100 border-l-4 border-green-500 rounded-xl p-6 mt-6 animate-slide-up">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                                AI Analysis Complete!
+                            </h4>
                              <div class="${severityBgColor} border ${severityBorderColor} rounded-xl p-4 mb-6 text-center">
                                  <span class="${severityTextColor} font-bold text-lg">${severity} SEVERITY LEVEL</span>
                              </div>
-                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                                 <div class="bg-white/10 rounded-xl p-4 text-center">
-                                     <div class="text-2xl font-bold text-blue-400 mb-1">${data.total_samples}</div>
-                                     <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Total Samples</div>
-                                 </div>
-                                 <div class="bg-white/10 rounded-xl p-4 text-center">
-                                     <div class="text-2xl font-bold text-red-400 mb-1">${data.summary['-1'] || 0}</div>
-                                     <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Anomalies</div>
-                                 </div>
-                                 <div class="bg-white/10 rounded-xl p-4 text-center">
-                                     <div class="text-2xl font-bold text-green-400 mb-1">${data.summary['1'] || 0}</div>
-                                     <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Normal</div>
-                                 </div>
-                                 <div class="bg-white/10 rounded-xl p-4 text-center">
-                                     <div class="text-2xl font-bold text-cyan-400 mb-1">${anomalyRate}%</div>
-                                     <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Anomaly Rate</div>
-                                 </div>
-                             </div>
+                                                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                <div class="bg-blue-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-blue-600 mb-1">${data.total_samples}</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Total Samples</div>
+                                </div>
+                                <div class="bg-red-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-red-600 mb-1">${data.summary['-1'] || 0}</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Anomalies</div>
+                                </div>
+                                <div class="bg-green-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-green-600 mb-1">${data.summary['1'] || 0}</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Normal</div>
+                                </div>
+                                <div class="bg-blue-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-blue-600 mb-1">${anomalyRate}%</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Anomaly Rate</div>
+                                </div>
+                            </div>
                              <div class="mb-6">
-                                 <h5 class="text-white font-semibold mb-3 flex items-center gap-2">
-                                     <i class="fas fa-lightbulb text-yellow-400"></i>
+                                 <h5 class="text-gray-800 font-semibold mb-3 flex items-center gap-2">
+                                     <i class="fas fa-lightbulb text-yellow-600"></i>
                                      Quick Insights:
                                  </h5>
-                                 <ul class="text-slate-300 space-y-2 pl-6">
+                                 <ul class="text-gray-800 space-y-2 pl-6">
                                      ${insightsHtml}
                                  </ul>
                              </div>
                              <div class="flex flex-wrap gap-3">
-                                 <a href="/ai-summary/${data.upload_id}" target="_blank" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 hover:text-blue-200 px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
+                                 <a href="/ai-summary/${data.upload_id}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
                                      <i class="fas fa-chart-bar"></i>
                                      AI Report
                                  </a>
-                                 <a href="/chart/${data.upload_id}" target="_blank" class="bg-green-500/20 hover:bg-green-500/30 text-green-300 hover:text-green-200 px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
+                                 <a href="/chart/${data.upload_id}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
                                      <i class="fas fa-chart-line"></i>
                                      Visualization
                                  </a>
-                                 <a href="/pdf/${data.upload_id}" class="bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 hover:text-cyan-200 px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
+                                 <a href="/pdf/${data.upload_id}" class="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
                                      <i class="fas fa-file-pdf"></i>
                                      Download PDF
                                  </a>
-                                 <a href="/predictions/${data.upload_id}/html" target="_blank" class="bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 hover:text-cyan-200 px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
+                                 <a href="/predictions/${data.upload_id}/html" target="_blank" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 font-medium">
                                      <i class="fas fa-tree"></i>
                                      Predictions
                                  </a>
@@ -410,32 +410,32 @@ def home():
                      `;
                 } else {
                     resultDiv.innerHTML = `
-                        <div class="bg-green-500/10 border-l-4 border-green-500 rounded-xl p-6 mt-6 animate-slide-up">
-                            <h4 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                                <i class="fas fa-check-circle text-green-400"></i>
+                        <div class="bg-green-100 border-l-4 border-green-500 rounded-xl p-6 mt-6 animate-slide-up">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-600"></i>
                                 Log Analysis Complete!
                             </h4>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                                <div class="bg-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-2xl font-bold text-red-400 mb-1">${data.incident_counts.critical_errors}</div>
-                                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Critical</div>
+                                <div class="bg-red-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-red-600 mb-1">${data.incident_counts.critical_errors}</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Critical</div>
                                 </div>
-                                <div class="bg-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-2xl font-bold text-orange-400 mb-1">${data.incident_counts.errors}</div>
-                                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Errors</div>
+                                <div class="bg-orange-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-orange-600 mb-1">${data.incident_counts.errors}</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Errors</div>
                                 </div>
-                                <div class="bg-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-2xl font-bold text-yellow-400 mb-1">${data.incident_counts.warnings}</div>
-                                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Warnings</div>
+                                <div class="bg-yellow-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-yellow-600 mb-1">${data.incident_counts.warnings}</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Warnings</div>
                                 </div>
-                                <div class="bg-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-2xl font-bold text-cyan-400 mb-1">${data.incident_counts.alarms}</div>
-                                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Alarms</div>
+                                <div class="bg-cyan-50 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-cyan-600 mb-1">${data.incident_counts.alarms}</div>
+                                    <div class="text-sm text-gray-600 font-medium uppercase tracking-wider">Alarms</div>
                                 </div>
                             </div>
-                            <div class="bg-white/5 rounded-xl p-4">
-                                <p class="text-slate-300">
-                                    <span class="font-semibold text-white">AI Summary:</span> ${data.summary}
+                            <div class="bg-gray-50 rounded-xl p-4">
+                                <p class="text-gray-700">
+                                    <span class="font-semibold text-gray-800">AI Summary:</span> ${data.summary}
                                 </p>
                             </div>
                         </div>
@@ -3059,10 +3059,10 @@ def list_uploads_html():
                 transition: all 0.3s ease;
             }}
             
-            .dark body {
+            .dark body {{
                 background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
                 color: #e2e8f0;
-            }
+            }}
             
             .container {{ 
                 max-width: 1200px; 
