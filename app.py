@@ -531,22 +531,52 @@ def health_page():
     """User-friendly health check page"""
     return """
     <!DOCTYPE html>
-    <html>
+    <html class="light">
     <head>
         <title>System Health - NetOps AI Pipeline</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                50: '#eff6ff',
+                                100: '#dbeafe',
+                                200: '#bfdbfe',
+                                300: '#93c5fd',
+                                400: '#60a5fa',
+                                500: '#3b82f6',
+                                600: '#2563eb',
+                                700: '#1d4ed8',
+                                800: '#1e40af',
+                                900: '#1e3a8a',
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
         <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
             
             body { 
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
                 min-height: 100vh;
-                color: #e2e8f0;
+                color: #1e293b;
                 line-height: 1.6;
+                transition: all 0.3s ease;
+            }
+            
+            .dark body {
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                color: #e2e8f0;
             }
             
             .container { 
@@ -595,12 +625,48 @@ def health_page():
                 transform: translateY(-2px);
             }
             
-            .health-container {
-                background: rgba(255,255,255,0.05);
+            .theme-toggle {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255,255,255,0.1);
+                color: #ffffff;
+                padding: 10px;
+                border-radius: 10px;
+                text-decoration: none;
+                transition: all 0.3s ease;
                 backdrop-filter: blur(10px);
-                border: 1px solid rgba(255,255,255,0.1);
+                border: none;
+                cursor: pointer;
+                font-size: 1.2em;
+            }
+            
+            .theme-toggle:hover {
+                background: rgba(255,255,255,0.2);
+                transform: translateY(-2px);
+            }
+            
+            .dark .theme-toggle {
+                background: rgba(0,0,0,0.2);
+                color: #e2e8f0;
+            }
+            
+            .dark .theme-toggle:hover {
+                background: rgba(0,0,0,0.3);
+            }
+            
+            .health-container {
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 20px;
                 padding: 30px;
+                transition: all 0.3s ease;
+            }
+            
+            .dark .health-container {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }
             
             .status-grid {
@@ -611,12 +677,17 @@ def health_page():
             }
             
             .status-card {
-                background: rgba(255,255,255,0.05);
-                border: 1px solid rgba(255,255,255,0.1);
+                background: rgba(255,255,255,0.1);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 15px;
                 padding: 25px;
                 text-align: center;
                 transition: all 0.3s ease;
+            }
+            
+            .dark .status-card {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }
             
             .status-card.healthy {
@@ -655,6 +726,10 @@ def health_page():
                 font-size: 1.3em;
                 font-weight: 600;
                 margin-bottom: 10px;
+                color: #1e293b;
+            }
+            
+            .dark .status-title {
                 color: #ffffff;
             }
             
@@ -670,16 +745,25 @@ def health_page():
             }
             
             .system-info {
-                background: rgba(255,255,255,0.05);
+                background: rgba(255,255,255,0.1);
                 border-radius: 15px;
                 padding: 25px;
                 margin-top: 30px;
+                transition: all 0.3s ease;
+            }
+            
+            .dark .system-info {
+                background: rgba(255,255,255,0.05);
             }
             
             .system-info h3 {
-                color: #ffffff;
+                color: #1e293b;
                 margin-bottom: 20px;
                 font-size: 1.3em;
+            }
+            
+            .dark .system-info h3 {
+                color: #ffffff;
             }
             
             .info-grid {
@@ -689,9 +773,14 @@ def health_page():
             }
             
             .info-item {
-                background: rgba(255,255,255,0.05);
+                background: rgba(255,255,255,0.1);
                 border-radius: 10px;
                 padding: 15px;
+                transition: all 0.3s ease;
+            }
+            
+            .dark .info-item {
+                background: rgba(255,255,255,0.05);
             }
             
             .info-label {
@@ -703,9 +792,13 @@ def health_page():
             }
             
                          .info-value {
-                 color: #ffffff;
+                 color: #1e293b;
                  font-weight: 600;
                  font-size: 1.1em;
+             }
+             
+             .dark .info-value {
+                 color: #ffffff;
              }
              
              @media (max-width: 768px) {
@@ -873,6 +966,10 @@ def health_page():
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
             
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+            
             <div class="header">
                 <h1><i class="fas fa-heartbeat"></i> System Health</h1>
                 <p>Real-time monitoring and system status</p>
@@ -940,6 +1037,41 @@ def health_page():
                 </div>
             </div>
         </div>
+        
+        <script>
+            // Theme toggle functionality
+            function toggleTheme() {
+                const html = document.documentElement;
+                const themeIcon = document.getElementById('theme-icon');
+                
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fas fa-moon';
+            }
+        </script>
     </body>
     </html>
     """
@@ -949,22 +1081,52 @@ def docs_page():
     """User-friendly documentation page"""
     return """
     <!DOCTYPE html>
-    <html>
+    <html class="light">
     <head>
         <title>Documentation - NetOps AI Pipeline</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                50: '#eff6ff',
+                                100: '#dbeafe',
+                                200: '#bfdbfe',
+                                300: '#93c5fd',
+                                400: '#60a5fa',
+                                500: '#3b82f6',
+                                600: '#2563eb',
+                                700: '#1d4ed8',
+                                800: '#1e40af',
+                                900: '#1e3a8a',
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
         <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
             
             body { 
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
                 min-height: 100vh;
-                color: #e2e8f0;
+                color: #1e293b;
                 line-height: 1.6;
+                transition: all 0.3s ease;
+            }
+            
+            .dark body {
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                color: #e2e8f0;
             }
             
             .container { 
@@ -1013,12 +1175,48 @@ def docs_page():
                 transform: translateY(-2px);
             }
             
-            .docs-container {
-                background: rgba(255,255,255,0.05);
+            .theme-toggle {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255,255,255,0.1);
+                color: #ffffff;
+                padding: 10px;
+                border-radius: 10px;
+                text-decoration: none;
+                transition: all 0.3s ease;
                 backdrop-filter: blur(10px);
-                border: 1px solid rgba(255,255,255,0.1);
+                border: none;
+                cursor: pointer;
+                font-size: 1.2em;
+            }
+            
+            .theme-toggle:hover {
+                background: rgba(255,255,255,0.2);
+                transform: translateY(-2px);
+            }
+            
+            .dark .theme-toggle {
+                background: rgba(0,0,0,0.2);
+                color: #e2e8f0;
+            }
+            
+            .dark .theme-toggle:hover {
+                background: rgba(0,0,0,0.3);
+            }
+            
+            .docs-container {
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 20px;
                 padding: 30px;
+                transition: all 0.3s ease;
+            }
+            
+            .dark .docs-container {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }
             
             .section {
@@ -1026,12 +1224,16 @@ def docs_page():
             }
             
             .section h3 {
-                color: #ffffff;
+                color: #1e293b;
                 font-size: 1.5em;
                 margin-bottom: 20px;
                 display: flex;
                 align-items: center;
                 gap: 10px;
+            }
+            
+            .dark .section h3 {
+                color: #ffffff;
             }
             
             .feature-grid {
@@ -1042,11 +1244,16 @@ def docs_page():
             }
             
             .feature-card {
-                background: rgba(255,255,255,0.05);
-                border: 1px solid rgba(255,255,255,0.1);
+                background: rgba(255,255,255,0.1);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 15px;
                 padding: 25px;
                 transition: all 0.3s ease;
+            }
+            
+            .dark .feature-card {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }
             
             .feature-card:hover {
@@ -1064,13 +1271,21 @@ def docs_page():
             .feature-title {
                 font-size: 1.2em;
                 font-weight: 600;
-                color: #ffffff;
+                color: #1e293b;
                 margin-bottom: 10px;
             }
             
+            .dark .feature-title {
+                color: #ffffff;
+            }
+            
             .feature-description {
-                color: #94a3b8;
+                color: #64748b;
                 margin-bottom: 15px;
+            }
+            
+            .dark .feature-description {
+                color: #94a3b8;
             }
             
             .feature-list {
@@ -1079,10 +1294,14 @@ def docs_page():
             }
             
             .feature-list li {
-                color: #cbd5e1;
+                color: #475569;
                 margin-bottom: 5px;
                 padding-left: 20px;
                 position: relative;
+            }
+            
+            .dark .feature-list li {
+                color: #cbd5e1;
             }
             
             .feature-list li:before {
@@ -1094,23 +1313,36 @@ def docs_page():
             }
             
             .format-example {
-                background: rgba(0,0,0,0.3);
+                background: rgba(0,0,0,0.1);
                 border-radius: 10px;
                 padding: 20px;
                 margin: 20px 0;
                 border-left: 4px solid #3b82f6;
+                transition: all 0.3s ease;
+            }
+            
+            .dark .format-example {
+                background: rgba(0,0,0,0.3);
             }
             
             .format-example h4 {
-                color: #ffffff;
+                color: #1e293b;
                 margin-bottom: 10px;
             }
             
+            .dark .format-example h4 {
+                color: #ffffff;
+            }
+            
                          .format-example pre {
-                 color: #e2e8f0;
+                 color: #334155;
                  font-family: 'Courier New', monospace;
                  font-size: 0.9em;
                  overflow-x: auto;
+             }
+             
+             .dark .format-example pre {
+                 color: #e2e8f0;
              }
              
              @media (max-width: 768px) {
@@ -1276,6 +1508,10 @@ def docs_page():
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
             
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+            
             <div class="header">
                 <h1><i class="fas fa-book"></i> Documentation</h1>
                 <p>How to use the NetOps AI Pipeline effectively</p>
@@ -1413,6 +1649,41 @@ cell_002,2024-01-01 10:01:00,82.1,180,52.3,0.01
                 </div>
             </div>
         </div>
+        
+        <script>
+            // Theme toggle functionality
+            function toggleTheme() {
+                const html = document.documentElement;
+                const themeIcon = document.getElementById('theme-icon');
+                
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fas fa-moon';
+            }
+        </script>
     </body>
     </html>
     """
@@ -2096,26 +2367,97 @@ def ai_summary(upload_id: int):
         
         anomaly_rate = (len(anomalies) / len(df) * 100) if len(df) > 0 else 0
         
+        # Extract JavaScript config to avoid nested f-string issues
+        tailwind_config = """
+                tailwind.config = {
+                    darkMode: 'class',
+                    theme: {
+                        extend: {
+                            colors: {
+                                brand: {
+                                    50: '#eff6ff',
+                                    100: '#dbeafe',
+                                    200: '#bfdbfe',
+                                    300: '#93c5fd',
+                                    400: '#60a5fa',
+                                    500: '#3b82f6',
+                                    600: '#2563eb',
+                                    700: '#1d4ed8',
+                                    800: '#1e40af',
+                                    900: '#1e3a8a',
+                                }
+                            }
+                        }
+                    }
+                }
+        """
+        
+        # Extract JavaScript theme toggle to avoid syntax issues
+        theme_toggle_js = """
+            // Theme toggle functionality
+            function toggleTheme() {
+                const html = document.documentElement;
+                const themeIcon = document.getElementById('theme-icon');
+                
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fas fa-moon';
+            }
+        """
+        
         return f"""
         <!DOCTYPE html>
-        <html>
+        <html class="light">
         <head>
             <title>Network Performance Analysis Report - NetOps AI Pipeline</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script>
+                {tailwind_config}
+            </script>
             <style>
                 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
                 
                 body {{ 
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-                    color: #f1f5f9;
+                    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+                    color: #1e293b;
                     line-height: 1.7;
                     min-height: 100vh;
                     font-weight: 400;
+                    transition: all 0.3s ease;
                 }}
+                
+                .dark body {
+                    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                    color: #f1f5f9;
+                }
                 
                 .container {{ 
                     max-width: 1200px; 
@@ -2146,6 +2488,40 @@ def ai_summary(upload_id: int):
                     background: rgba(255,255,255,0.2);
                     transform: translateY(-2px);
                     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                }}
+                
+                .theme-toggle {{
+                    position: fixed;
+                    top: 30px;
+                    right: 30px;
+                    background: rgba(255,255,255,0.1);
+                    color: #ffffff;
+                    padding: 12px;
+                    border-radius: 12px;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    backdrop-filter: blur(20px);
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1.2em;
+                    z-index: 1000;
+                    border: 1px solid rgba(255,255,255,0.2);
+                }}
+                
+                .theme-toggle:hover {{
+                    background: rgba(255,255,255,0.2);
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                }}
+                
+                .dark .theme-toggle {{
+                    background: rgba(0,0,0,0.2);
+                    color: #e2e8f0;
+                    border: 1px solid rgba(255,255,255,0.1);
+                }}
+                
+                .dark .theme-toggle:hover {{
+                    background: rgba(0,0,0,0.3);
                 }}
                 
                 .header {{
@@ -2425,6 +2801,10 @@ def ai_summary(upload_id: int):
                     <i class="fas fa-arrow-left"></i> Back to Dashboard
                 </a>
                 
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                
                 <div class="header">
                     <h1><i class="fas fa-chart-line"></i> Network Performance Analysis</h1>
                     <p>Comprehensive network intelligence and performance optimization insights</p>
@@ -2482,6 +2862,10 @@ def ai_summary(upload_id: int):
                 </div>
             </div>
         </body>
+        
+        <script>
+            {theme_toggle_js}
+        </script>
         </html>
         """
         
@@ -2589,25 +2973,96 @@ def list_uploads_html():
         </div>
         """
     
+    # Extract JavaScript config to avoid nested f-string issues
+    tailwind_config = """
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                50: '#eff6ff',
+                                100: '#dbeafe',
+                                200: '#bfdbfe',
+                                300: '#93c5fd',
+                                400: '#60a5fa',
+                                500: '#3b82f6',
+                                600: '#2563eb',
+                                700: '#1d4ed8',
+                                800: '#1e40af',
+                                900: '#1e3a8a',
+                            }
+                        }
+                    }
+                }
+            }
+    """
+    
+    # Extract JavaScript theme toggle to avoid syntax issues
+    theme_toggle_js = """
+            // Theme toggle functionality
+            function toggleTheme() {
+                const html = document.documentElement;
+                const themeIcon = document.getElementById('theme-icon');
+                
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fas fa-moon';
+            }
+    """
+    
     return f"""
     <!DOCTYPE html>
-    <html>
+    <html class="light">
     <head>
         <title>Uploads - NetOps AI Pipeline</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            {tailwind_config}
+        </script>
         <style>
             * {{ margin: 0; padding: 0; box-sizing: border-box; }}
             
             body {{ 
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
                 min-height: 100vh;
-                color: #e2e8f0;
+                color: #1e293b;
                 line-height: 1.6;
+                transition: all 0.3s ease;
             }}
+            
+            .dark body {
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                color: #e2e8f0;
+            }
             
             .container {{ 
                 max-width: 1200px; 
@@ -2655,12 +3110,48 @@ def list_uploads_html():
                 transform: translateY(-2px);
             }}
             
-            .uploads-container {{
-                background: rgba(255,255,255,0.05);
+            .theme-toggle {{
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255,255,255,0.1);
+                color: #ffffff;
+                padding: 10px;
+                border-radius: 10px;
+                text-decoration: none;
+                transition: all 0.3s ease;
                 backdrop-filter: blur(10px);
-                border: 1px solid rgba(255,255,255,0.1);
+                border: none;
+                cursor: pointer;
+                font-size: 1.2em;
+            }}
+            
+            .theme-toggle:hover {{
+                background: rgba(255,255,255,0.2);
+                transform: translateY(-2px);
+            }}
+            
+            .dark .theme-toggle {{
+                background: rgba(0,0,0,0.2);
+                color: #e2e8f0;
+            }}
+            
+            .dark .theme-toggle:hover {{
+                background: rgba(0,0,0,0.3);
+            }}
+            
+            .uploads-container {{
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 20px;
                 padding: 30px;
+                transition: all 0.3s ease;
+            }}
+            
+            .dark .uploads-container {{
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }}
             
             .uploads-header {{
@@ -2669,12 +3160,21 @@ def list_uploads_html():
                 align-items: center;
                 margin-bottom: 30px;
                 padding-bottom: 20px;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }}
+            
+            .dark .uploads-header {{
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }}
             
             .uploads-title {{
                 font-size: 1.5em;
                 font-weight: 600;
+                color: #1e293b;
+            }}
+            
+            .dark .uploads-title {{
                 color: #ffffff;
             }}
             
@@ -2687,12 +3187,17 @@ def list_uploads_html():
             }}
             
             .upload-item {{
-                background: rgba(255,255,255,0.05);
-                border: 1px solid rgba(255,255,255,0.1);
+                background: rgba(255,255,255,0.1);
+                border: 1px solid rgba(0,0,0,0.1);
                 border-radius: 15px;
                 padding: 25px;
                 margin-bottom: 20px;
                 transition: all 0.3s ease;
+            }}
+            
+            .dark .upload-item {{
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
             }}
             
             .upload-item:hover {{
@@ -2709,12 +3214,16 @@ def list_uploads_html():
             }}
             
             .upload-header h4 {{
-                color: #ffffff;
+                color: #1e293b;
                 font-size: 1.2em;
                 font-weight: 600;
                 display: flex;
                 align-items: center;
                 gap: 10px;
+            }}
+            
+            .dark .upload-header h4 {{
+                color: #ffffff;
             }}
             
             .upload-date {{
@@ -2732,9 +3241,14 @@ def list_uploads_html():
             
             .stat {{
                 text-align: center;
-                background: rgba(255,255,255,0.05);
+                background: rgba(255,255,255,0.1);
                 border-radius: 10px;
                 padding: 15px;
+                transition: all 0.3s ease;
+            }}
+            
+            .dark .stat {{
+                background: rgba(255,255,255,0.05);
             }}
             
             .stat-value {{
@@ -2956,6 +3470,10 @@ def list_uploads_html():
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
             
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+            
             <div class="header">
                 <h1><i class="fas fa-list"></i> Upload History</h1>
                 <p>View all processed files and their AI analysis results</p>
@@ -2980,6 +3498,10 @@ def list_uploads_html():
                 '''}
             </div>
         </div>
+        
+        <script>
+            {theme_toggle_js}
+        </script>
     </body>
     </html>
     """
@@ -3108,26 +3630,97 @@ def get_predictions_html(upload_id: int):
                 </div>
                 """
         
+        # Extract JavaScript config to avoid nested f-string issues
+        tailwind_config = """
+                tailwind.config = {
+                    darkMode: 'class',
+                    theme: {
+                        extend: {
+                            colors: {
+                                brand: {
+                                    50: '#eff6ff',
+                                    100: '#dbeafe',
+                                    200: '#bfdbfe',
+                                    300: '#93c5fd',
+                                    400: '#60a5fa',
+                                    500: '#3b82f6',
+                                    600: '#2563eb',
+                                    700: '#1d4ed8',
+                                    800: '#1e40af',
+                                    900: '#1e3a8a',
+                                }
+                            }
+                        }
+                    }
+                }
+        """
+        
+        # Extract JavaScript theme toggle to avoid syntax issues
+        theme_toggle_js = """
+            // Theme toggle functionality
+            function toggleTheme() {
+                const html = document.documentElement;
+                const themeIcon = document.getElementById('theme-icon');
+                
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fas fa-moon';
+            }
+        """
+        
         return f"""
         <!DOCTYPE html>
-        <html>
+        <html class="light">
         <head>
             <title>Random Forest Predictions - NetOps AI Pipeline</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script>
+                {tailwind_config}
+            </script>
             <style>
                 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
                 
                 body {{ 
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-                    color: #f1f5f9;
+                    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+                    color: #1e293b;
                     line-height: 1.7;
                     min-height: 100vh;
                     font-weight: 400;
+                    transition: all 0.3s ease;
                 }}
+                
+                .dark body {
+                    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+                    color: #f1f5f9;
+                }
                 
                 .container {{ 
                     max-width: 1200px; 
@@ -3157,6 +3750,40 @@ def get_predictions_html(upload_id: int):
                 .back-btn:hover {{
                     background: rgba(255,255,255,0.2);
                     transform: translateY(-2px);
+                }}
+                
+                .theme-toggle {{
+                    position: fixed;
+                    top: 30px;
+                    right: 30px;
+                    background: rgba(255,255,255,0.1);
+                    color: #ffffff;
+                    padding: 12px;
+                    border-radius: 12px;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    backdrop-filter: blur(20px);
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1.2em;
+                    z-index: 1000;
+                    border: 1px solid rgba(255,255,255,0.2);
+                }}
+                
+                .theme-toggle:hover {{
+                    background: rgba(255,255,255,0.2);
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                }}
+                
+                .dark .theme-toggle {{
+                    background: rgba(0,0,0,0.2);
+                    color: #e2e8f0;
+                    border: 1px solid rgba(255,255,255,0.1);
+                }}
+                
+                .dark .theme-toggle:hover {{
+                    background: rgba(0,0,0,0.3);
                 }}
                 
                 .header {{
@@ -3383,6 +4010,10 @@ def get_predictions_html(upload_id: int):
                 </div>
             </div>
         </body>
+        
+        <script>
+            {theme_toggle_js}
+        </script>
         </html>
         """
         
