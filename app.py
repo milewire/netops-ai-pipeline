@@ -2566,7 +2566,7 @@ def ai_summary(upload_id: int):
                 
                 .severity-badge {{
                     display: inline-block;
-                    background: {severity_color}26;
+                    background: rgba(255,255,255,0.1);
                     color: {severity_color};
                     padding: 12px 24px;
                     border-radius: 25px;
