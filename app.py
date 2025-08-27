@@ -164,7 +164,7 @@ def home():
                     </div>
                     <div class="text-right">
                         <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-200">NetOps AI</h2>
-                        <p class="text-xs text-slate-600 dark:text-slate-400">Enterprise Pipeline</p>
+                        <p class="text-xs text-black dark:text-slate-400">Enterprise Pipeline</p>
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@ def home():
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-1">99.9%</div>
-                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Accuracy</div>
+                    <div class="text-sm text-black dark:text-slate-400 font-medium uppercase tracking-wider">Accuracy</div>
                 </div>
                 
                 <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white dark:hover:bg-white/10 hover:border-green-300/50 dark:hover:border-white/20 hover:-translate-y-1 group shadow-lg">
@@ -198,7 +198,7 @@ def home():
                         <i class="fas fa-bolt"></i>
                     </div>
                     <div class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-1">&lt; 2s</div>
-                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Processing</div>
+                    <div class="text-sm text-black dark:text-slate-400 font-medium uppercase tracking-wider">Processing</div>
                 </div>
                 
                 <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white dark:hover:bg-white/10 hover:border-purple-300/50 dark:hover:border-white/20 hover:-translate-y-1 group shadow-lg">
@@ -206,7 +206,7 @@ def home():
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <div class="text-lg md:text-xl font-bold text-slate-800 dark:text-white mb-1">Enterprise</div>
-                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Security</div>
+                    <div class="text-sm text-black dark:text-slate-400 font-medium uppercase tracking-wider">Security</div>
                 </div>
                 
                 <div class="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:bg-white dark:hover:bg-white/10 hover:border-cyan-300/50 dark:hover:border-white/20 hover:-translate-y-1 group shadow-lg">
@@ -214,7 +214,7 @@ def home():
                         <i class="fas fa-robot"></i>
                     </div>
                     <div class="text-lg md:text-xl font-bold text-slate-800 dark:text-white mb-1">AI-Powered</div>
-                    <div class="text-sm text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider">Insights</div>
+                    <div class="text-sm text-black dark:text-slate-400 font-medium uppercase tracking-wider">Insights</div>
                 </div>
             </div>
             
@@ -226,14 +226,14 @@ def home():
                         <i class="fas fa-chart-bar text-brand-500 dark:text-brand-400"></i>
                         KPI Anomaly Detection
                     </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                    <p class="text-black dark:text-slate-300 mb-6 leading-relaxed">
                         Upload network performance data to receive AI-powered insights, anomaly detection, and actionable recommendations for network optimization.
                     </p>
                     
                     <form id="kpiForm">
                         <div class="border-2 border-dashed border-brand-500/30 dark:border-brand-500/30 rounded-2xl p-8 text-center bg-brand-500/5 dark:bg-brand-500/5 transition-all duration-300 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-brand-500/10 dark:hover:bg-brand-500/10 mb-6">
                             <input type="file" name="file" accept=".csv" required class="w-full text-slate-700 dark:text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-500 file:text-white hover:file:bg-brand-600 transition-colors">
-                            <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
+                            <p class="mt-4 text-sm text-black dark:text-slate-400">
                                 <i class="fas fa-info-circle mr-2"></i>
                                 Expected format: cell_id, timestamp, PRB_Util, RRC_Conn, Throughput_Mbps, BLER
                             </p>
@@ -262,14 +262,14 @@ def home():
                         <i class="fas fa-file-alt text-green-500 dark:text-green-400"></i>
                         Log Analysis
                     </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                    <p class="text-black dark:text-slate-300 mb-6 leading-relaxed">
                         Upload system logs for intelligent incident detection, error categorization, and automated alert generation with severity assessment.
                     </p>
                     
                     <form id="logForm">
                         <div class="border-2 border-dashed border-green-500/30 dark:border-green-500/30 rounded-2xl p-8 text-center bg-green-500/5 dark:bg-green-500/5 transition-all duration-300 hover:border-green-500/50 dark:hover:border-green-500/50 hover:bg-green-500/10 dark:hover:bg-green-500/10 mb-6">
                             <input type="file" name="file" accept=".log,.txt" required class="w-full text-slate-700 dark:text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-500 file:text-white hover:file:bg-green-600 transition-colors">
-                            <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
+                            <p class="mt-4 text-sm text-black dark:text-slate-400">
                                 <i class="fas fa-info-circle mr-2"></i>
                                 Supports ERROR, WARN, CRIT, ALARM, INFO log levels
                             </p>
@@ -1932,7 +1932,7 @@ def system_status_page():
             }
             
             .feature-text {
-                color: #1e293b;
+                color: #000000;
                 font-weight: 500;
             }
             
@@ -3214,7 +3214,7 @@ def list_uploads_html():
             }}
             
             .upload-header h4 {{
-                color: #1e293b;
+                color: #000000;
                 font-size: 1.2em;
                 font-weight: 600;
                 display: flex;
@@ -3227,7 +3227,7 @@ def list_uploads_html():
             }}
             
             .upload-date {{
-                color: #94a3b8;
+                color: #000000;
                 font-size: 0.9em;
                 font-weight: 500;
             }}
@@ -3260,7 +3260,7 @@ def list_uploads_html():
             }}
             
             .stat-label {{
-                color: #94a3b8;
+                color: #000000;
                 font-size: 0.8em;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
@@ -3293,7 +3293,7 @@ def list_uploads_html():
             .empty-state {{
                 text-align: center;
                 padding: 60px 20px;
-                color: #94a3b8;
+                color: #000000;
             }}
             
             .empty-state i {{
@@ -3858,7 +3858,7 @@ def get_predictions_html(upload_id: int):
                 
                 .metric-label {{
                     font-size: 0.9em;
-                    opacity: 0.8;
+                    color: #000000;
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                 }}
@@ -3876,6 +3876,7 @@ def get_predictions_html(upload_id: int):
                 .status-label {{
                     font-weight: 600;
                     min-width: 80px;
+                    color: #000000;
                 }}
                 
                 .status-bar {{
@@ -3894,7 +3895,7 @@ def get_predictions_html(upload_id: int):
                 
                 .status-count {{
                     font-size: 0.9em;
-                    opacity: 0.8;
+                    color: #000000;
                     min-width: 80px;
                     text-align: right;
                 }}
@@ -3931,7 +3932,7 @@ def get_predictions_html(upload_id: int):
                 
                 .feature-value {{
                     font-size: 0.9em;
-                    opacity: 0.8;
+                    color: #000000;
                     min-width: 60px;
                     text-align: right;
                 }}
